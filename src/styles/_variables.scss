@@ -2,11 +2,12 @@
     --tm-color-lime: #c0ff01;
     --tm-color-light-lime: #dcff71;
     --tm-color-soft-lime: #ebffad;
+    --tm-color-green-lime:#E3FF8D;
     --tm-color-violet: #6046ff;
     --tm-color-purpur: #9074ff;
     --tm-color-dark-black: #101010ad;
     --tm-color-light-black: #191a1b;
-    --tm-color-card-black: #212124;
+    --tm-color-card-black: #212121;
     --tm-color-dark-grey: #313233;
     --tm-color-grey: #6d7175;
     --tm-color-light-grey: #999898;
@@ -19,17 +20,25 @@
     --tm-color-pink-tag: #ff8dfa;
     --tm-color-blue-tag: #9bd3f2;
 
+    --tm-color-almost-black: #282828;
+    --tm-color-dark-blue-black: #212124;
+    --tm-color-dark-black-2: #101010d3;
+
     --border: 1px solid var(--tm-color-white);
-    --border-radius: 20px;
-    --border-radius-section:15px;
+    --border-radius: 25px;
+    --border-radius-section:35px;
     --border-radius-circle:50%;
 
     --font-family-base:'Rubik', sans-serif;
 
-    --section-padding-y:70px;
+    --section-padding-y:140px;
 
-    --container-width:1240px;
+    --container-width:1920px;
     --container-padding-x:20px;
+
+    --padding-inline-desktop:50px;
+    --padding-inline-tablet:15px;
+    --padding-inline-mobile:10px;
 
     --input-height:59px;
     --button-heigh:53px;

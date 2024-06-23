@@ -1,0 +1,14 @@
+@import '../styles/style.scss';
+
+.main-body{
+     --padding-top: 70px;
+
+     padding-top: var(--padding-top);
+
+     @include tablet{
+          --padding-top: 60px;
+     }
+     @include mobile{
+          --padding-top: 70px;
+     }
+}

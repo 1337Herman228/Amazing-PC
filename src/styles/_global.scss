@@ -1,6 +1,8 @@
 :root{
     --text-main-color: var(--tm-color-white);
     --background-main-color: var(--tm-color-light-black);
+
+    scrollbar-color: var(--tm-color-lime) transparent;
 }
 
 body{
@@ -35,13 +37,173 @@ h1{
 }
 
 h2{
-    @include fluid-text(40, 36);
+    @include fluid-text(50, 36);
 }
 
-h3{
+h3,.h3{
     @include fluid-text(30, 26);
 }
 
 h4{
     @include fluid-text(20, 18);
+}
+
+hr{
+    border:0 !important;
+    border-top: 1px solid #2a2a2a !important;
+}
+
+.display-none{
+    display:none !important;
+}
+
+.link-more-details{
+    --linkFontSize: 15px;
+
+    @include reset-link();
+
+    // padding: 15px 60px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    color:black;
+    transition-duration: var(--transition-duration);
+
+    background-color: var(--tm-color-lime);
+    border-radius: var(--border-radius);
+
+    font-size: var(--linkFontSize);
+
+    &:hover{
+         color: black;
+         background-color: var(--tm-color-light-lime);
+    }
+
+    @include tablet{
+        --linkFontSize: 13px;
+    }
+
+    @include mobile{
+        --linkFontSize: 2.5vw;
+        margin: 7px auto;
+    }
+}
+
+.gray-card{
+    background-color: var(--tm-color-card-black);
+    border-radius: var(--border-radius-section);
+}
+
+.button-transparent-white{
+    text-transform: uppercase;
+    color:white;
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    border: 1px solid white;
+
+    @include hover{
+        color: black;
+        background-color: white;
+    }
+}
+
+.button-gray-no-border{
+    @include flex-center;
+    padding : 14px 40px;
+    
+    text-transform: uppercase;
+    color:white;
+    background-color: var(--tm-color-almost-black);
+    border-radius: var(--border-radius);
+    border: none;
+
+    @include hover{
+        color: black;
+        background-color: white;
+    }
+}
+
+
+.green-circle-bordered-link{
+    text-transform: uppercase;
+    // font-size: 14px;
+    font-weight: 300;
+    color:var(--tm-color-lime);
+    border: 1px solid var(--tm-color-lime);
+    border-radius: var(--border-radius-section);
+    // padding: 18px 40px;
+
+    @include hover{
+        color: white;
+    }
+}
+
+.green-filled-link{
+    @include flex-center;
+
+    color: black;
+    background-color: var(--tm-color-lime);
+    border: none;
+
+    @include hover{
+        background-color: var(--tm-color-soft-lime);
+    }
+}
+
+.green-circle-filled-link{
+    @include flex-center;
+    @include square(55px);
+
+    color: black;
+    background-color: var(--tm-color-lime);
+    border: none;
+    border-radius: var(--border-radius-circle);
+
+    @include hover{
+        background-color: var(--tm-color-soft-lime);
+    }
+}
+
+.green-circle-bordered-button{
+    @include flex-center;
+    @include square(56px);
+
+    color: var(--tm-color-lime);
+    background-color: transparent;
+    border: 2px solid var(--tm-color-lime);
+    border-radius: var(--border-radius-circle);
+
+    @include hover{
+        background-color: var(--tm-color-lime);
+        color: black;
+    }
+
+    &[disabled]{
+        color: var(--tm-color-grey);
+        border-color: var(--tm-color-grey);
+
+        @include hover{
+            background-color: transparent;
+            color: var(--tm-color-grey);
+        }
+    }
+}
+
+.mark{
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    background-color: white;
+    border:none;
+    border-radius: var(--border-radius-section);
+    padding: 7px 20px;
+}
+
+.mark-bestseller{
+    background-color: var(--tm-color-green-tag);
+}
+.mark-new{
+    background-color: var(--tm-color-violet-tag);
 }

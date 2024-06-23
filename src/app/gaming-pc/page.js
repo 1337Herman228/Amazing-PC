@@ -1,7 +1,9 @@
-export default function Users() {
+import GamingPcPage from '../../components/pages/gaming-pc/GamingPcPage'
+
+export default function Page() {
+
+
     return(
-        <main>
-            <h1>Users</h1>
-        </main>
+        <GamingPcPage/>
     )
 }

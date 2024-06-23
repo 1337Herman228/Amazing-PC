@@ -4,6 +4,21 @@
     padding-inline: var(--container-padding-x);
 }
 
+.container-fluid{
+    max-width: 100%;
+}
+
+.section{
+    padding-inline: var(--padding-inline-desktop);
+
+    @include tablet{
+        padding-inline: var(--padding-inline-tablet);
+    }
+    @include mobile{
+        padding-inline: var(--padding-inline-mobile);
+    }
+}
+
 .visually-hidden{
     position: absolute !important;
     width: 1px !important;
@@ -22,9 +37,19 @@
         display:none !important;
     }
 }
+.hidden-tablet{
+    @include tablet{
+        display:none !important;
+    }
+}
 
 .visible-mobile{
     @include mobile-above{
+        display:none !important;
+    }
+}
+.visible-tablet{
+    @include tablet-above{
         display:none !important;
     }
 }

@@ -1,10 +1,8 @@
-import Image from "next/image";
 import '../styles/style.scss'
+import MainPage from '../components/pages/main-page/MainPage'
 
-export default function Home() {
-  return (
-   <main>
-    <h1>Amazing PC</h1>
-   </main>
-  );
+export default function Page() {
+    return(
+        <MainPage/>
+    )
 }

@@ -1,0 +1,74 @@
+@import '../../../styles/style.scss';
+
+.design{
+     padding-top: 50px;
+
+     &__img{
+          border-radius: var(--border-radius-section);
+          object-fit: cover;
+          height: 45vw;
+          margin-bottom: 15px;
+          max-height: 680px;
+          width: 100%;
+     }
+
+     &__body{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background-color: var(--tm-color-dark-blue-black);
+          border-radius: var(--border-radius-section);
+          padding: 70px;
+
+          @include mobile{
+               padding: 30px;
+          }
+
+          @include mobile{
+               display: flex;
+               flex-direction: column;
+          }
+
+          &-title{
+               align-self: center;
+               justify-self: center;
+               padding-right: 50px;
+               font-weight: 400;
+               font-size: clamp(35px, 4vw, 56px);
+
+               @include mobile{
+                    justify-self: start;
+                    align-self: start;
+                    margin-bottom: 15px;
+               }
+          }
+
+          &-info{
+
+               &-footer{
+                    display: flex;
+                    flex-wrap: wrap;
+                    // justify-content: space-between;
+                    gap: 15px 40px;
+               }
+
+               &__description{
+                    margin-bottom: 20px;
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: var(--tm-color-dark-white);
+               }
+
+               &__price{
+                    display: flex;
+                    align-items: center;
+                    font-size: 24px;
+               }
+
+               &__link{
+                    font-size: 15px;
+                    padding: 14px 35px;
+               }
+          }
+     }
+
+}

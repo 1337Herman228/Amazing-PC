@@ -1,20 +1,24 @@
 @import '../../styles/_media.scss';
 @import '../../styles/_mixins.scss';
 
-.header__inner{
+.header{
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    z-index: 1000;
     background-color: var(--tm-color-dark-black);
-    padding: 5px;
-    display:grid;
-    grid-template-columns: 220px auto auto;
-    font-size: 12px;
-    // border-bottom-left-radius: 15px;
-    // border-bottom-right-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    box-shadow: 0 0.2px 0 var(--tm-color-dark-white);
+    backdrop-filter: blur(10px);
+}
 
-        box-shadow: 0 0.1px 0 var(--tm-color-dark-white);
+.header__inner{
+    display:grid;
+    grid-template-columns: 180px auto auto;
+    font-size: 14px;
 
     @include tablet{
-        grid-template-columns: 160px auto auto;
+        grid-template-columns: 150px auto auto;
         font-size: 10px;
         padding-inline: 5px;
     }
@@ -29,8 +33,8 @@
 
         @include tablet{
             .logo__img{
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -42,9 +46,10 @@
         }
     
         .logo__text{
+            font-family: 'Permanent Marker';
             justify-self: center;
             align-self: center;
-            font-size: 21px;
+            font-size: 23px;
             font-weight: 400;
             color:var(--tm-color-lime);
             position:relative;
@@ -52,30 +57,34 @@
             align-items: center;
 
             @include tablet{
-                font-size: 16px;
+                font-size: 18px;
             }
             @include mobile{
                 font-size: 21px;
             }
 
             @include hover{
-                &::after{
-                    width:100%;
-                    color: var(--tm-color-lime)
-                }
+
+                color: orange;
+                transition-duration: var(--transition-duration);
+
+                // &::after{
+                //     width:100%;
+                //     color: var(--tm-color-lime)
+                // }
             }
 
-            &::after{
-                content:'';
-                position: absolute;
-                top:100%;
-                left:50%;
-                translate:-50%;
-                width: 0;   
-                height: 0.5px;
-                background-color: var(--tm-color-white);
-                transition-duration: 0.2s;
-            }
+            // &::after{
+            //     content:'';
+            //     position: absolute;
+            //     top:100%;
+            //     left:50%;
+            //     translate:-50%;
+            //     width: 0;   
+            //     height: 0.5px;
+            //     background-color: var(--tm-color-white);
+            //     transition-duration: 0.2s;
+            // }
         }
     
         &::after{
@@ -122,6 +131,12 @@
                         height: 0.5px;
                         background-color: var(--tm-color-lime);
                         transition-duration: inherit;
+                    }
+                }
+
+                .header__menu-link.current-link{
+                    &::after{
+                        width:100%;
                     }
                 }
             }

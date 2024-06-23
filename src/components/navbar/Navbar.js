@@ -1,7 +1,11 @@
-'use client'
+'use client';
 
 import Link from "next/link";
 import './Navbar.scss'
+
+import { useRouter } from "next/navigation";
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect } from "react";
 
 export default function Users() {
 
@@ -10,40 +14,58 @@ export default function Users() {
         dialog.showModal();
     }
 
+    const pathname = usePathname()
+    useEffect(() => {
+        markCurrentLink(pathname);
+    }, [pathname])
+    
+    const markCurrentLink = (currentUrl) => {
+        
+        const links = document.querySelectorAll('.link-to-check');
+
+        for(var i=0;i<links.length;i++) {
+            links[i].classList.remove('current-link');
+            const url = 'http://localhost:3000' + currentUrl
+            
+            if(url.includes(links[i].href)){
+                links[i].classList.add('current-link');
+            }
+        }
+    }
+
     return (
         <>
-       
         <header className="header">
             <div className="header__inner container">
 
-                <Link className="header__logo logo" href="/">
-                <img 
+                <Link className="header__logo logo link-to-check" href="/">
+                {/* <img 
                     className="logo__img" 
                     src="/logo.svg"
                     alt="Amazing PC" 
                     width={60} 
                     height={60} 
                     loading="lazy"
-                />
+                /> */}
                 <span className="logo__text uppercase-text">Amazing PC</span>
                 </Link>
 
                 <nav className="header__menu hidden-mobile">
                     <ul className="header__menu-list">
                         <li className="header__menu-item">
-                            <Link className="header__menu-link uppercase-text" href="/gaming-pc">Игровые ПК</Link>
+                            <Link className="header__menu-link link-to-check uppercase-text" href="/gaming-pc">Игровые ПК</Link>
                         </li>
                         <li className="header__menu-item">
-                            <Link className="header__menu-link uppercase-text" href="/notebook">Ноутбуки</Link>
+                            <Link className="header__menu-link link-to-check uppercase-text" href="/notebook">Ноутбуки</Link>
                         </li>
                         <li className="header__menu-item">
-                            <Link className="header__menu-link uppercase-text" href="/workstation">Рабочие станции</Link>
+                            <Link className="header__menu-link link-to-check uppercase-text" href="/workstation">Рабочие станции</Link>
                         </li>
                         <li className="header__menu-item">
-                            <Link className="header__menu-link uppercase-text" href="/configurator">Конфигуратор</Link>
+                            <Link className="header__menu-link link-to-check uppercase-text" href="/configurator">Конфигуратор</Link>
                         </li>
                         <li className="header__menu-item">
-                            <Link className="header__menu-link uppercase-text" href="/assistance">Услуги</Link>
+                            <Link className="header__menu-link link-to-check uppercase-text" href="/assistance">Услуги</Link>
                         </li>
                     </ul>
                 </nav>
