@@ -1,0 +1,29 @@
+
+.tag{
+    background-color: var(--tm-color-dark-grey);
+    border-radius: var(--border-radius-section);
+    padding: 40px;
+    font-weight: 500;
+    // max-height: 171px;
+    // max-width: 385px;
+
+    &__title{
+        font-size:18px;
+    }
+
+    &__body{
+        font-size: clamp(25px, 2vw, 32px);
+
+        // &-prefix{
+
+        // }
+
+        &-main-value{
+            font-size:clamp(35px, 3.4vw, 64px);
+        }
+
+        // &-postfix{
+
+        // }
+    }
+}

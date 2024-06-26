@@ -207,3 +207,12 @@ hr{
 .mark-new{
     background-color: var(--tm-color-violet-tag);
 }
+
+.mark-gray-green{
+    background-color: var(--tm-color-dark-grey-2);
+    color: var(--tm-color-lime);
+    border-radius: var(--border-radius-section);
+    font-size: 16px;
+    font-weight: 300;
+    padding: 13px 20px;
+}

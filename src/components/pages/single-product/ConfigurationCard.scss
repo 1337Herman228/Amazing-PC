@@ -1,0 +1,46 @@
+
+.configuration-card{
+
+
+    &__img{
+
+    }
+
+    &__title{
+
+    }
+
+    &__rate{
+
+    }
+
+}
+
+.buy-button{
+    background-color: var(--tm-color-dark-grey-2);
+    border:none;
+    color:white;
+    padding: 10px;
+    position: relative;
+    transition-duration: var(--transition-duration);
+
+    &::before{
+        content:'';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20%;
+        height: 100%;
+        background-color: var(--tm-color-lime);
+        transition-duration: var(--transition-duration);
+    }
+
+    &:hover{
+        color: black;
+    }
+
+    &:hover::before{
+        width: 100%;
+
+    }
+}

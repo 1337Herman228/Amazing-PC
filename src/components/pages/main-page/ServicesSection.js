@@ -2,92 +2,92 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-     const list_info = [
-          {
-               title:'Апгрейд-центр',
-               description:'Место, где мы преображаем Ваши ПК как изнутри, так и снаружи. Здесь наши специалисты с многолетним опытом подарят новую жизнь вашему верному стальному другу.',
-               link_to:'/assistance/tech-support',
-               services_list:[
-                    {
-                         list_item_name:'Обновить видеокарту',
-                         list_item_svg_link:'/services-list-svg/1.svg',
-                    },
-                    {
-                         list_item_name:'Увеличить объём ОЗУ',
-                         list_item_svg_link:'/services-list-svg/2.svg',
-                    },
-                    {
-                         list_item_name:'Подобрать новый процессор',
-                         list_item_svg_link:'/services-list-svg/3.svg',
-                    },
-                    {
-                         list_item_name:'Улучшить систему охлаждения',
-                         list_item_svg_link:'/services-list-svg/4.svg',
-                    },
-               ]
-          },
-          {
-               title:'Техническое обслуживание',
-               description:'Здоровый компьютер – залог успеха в играх, работе и творчестве. Наши профессионалы позаботятся о вашем ПК, проведя все необходимые процедуры.',
-               link_to:'/assistance/tech-support',
-               services_list:[
-                    {
-                         list_item_name:'Проведём профессиональную чистку системы',
-                         list_item_svg_link:'/services-list-svg/5.svg',
-                    },
-                    {
-                         list_item_name:'Обслужить кастомное водяное охлаждение',
-                         list_item_svg_link:'/services-list-svg/6.svg',
-                    },
-                    {
-                         list_item_name:'Заменить термоинтерфейс',
-                         list_item_svg_link:'/services-list-svg/7.svg',
-                    },
-                    {
-                         list_item_name:'Оптимизировать ОС',
-                         list_item_svg_link:'/services-list-svg/8.svg',
-                    },
-               ]
-          },
-          {
-               title:'Сервис-центр',
-               description:'Опытные сотрудники проведут полную диагностику ПК и устранят проблему, чтобы вы могли без лишних забот наслаждаться стабильной работой вашего компьютера.',
-               link_to:'/assistance/tech-support',
-               services_list:[
-                    {
-                         list_item_name:'Проведем полную диагностику',
-                         list_item_svg_link:'/services-list-svg/9.svg',
-                    },
-                    {
-                         list_item_name:'Заменим неисправные комплектующие',
-                         list_item_svg_link:'/services-list-svg/10.svg',
-                    },
-               ]
-          },
-          {
-               title:'Моддинг',
-               description:'Реализуем все ваши самые интересные задумки по дизайну ПК. Наши мастера создадут уникальный внешний вид вашего компьютера, учитывая все ваши пожелания.',
-               link_to:'/assistance/tech-support',
-               services_list:[
-                    {
-                         list_item_name:'Нанести винил по вашему эскизу',
-                         list_item_svg_link:'/services-list-svg/11.svg',
-                    },
-                    {
-                         list_item_name:'Сделать профессиональную аэрографию',
-                         list_item_svg_link:'/services-list-svg/12.svg',
-                    },
-                    {
-                         list_item_name:'Использовать автомобильную покраску',
-                         list_item_svg_link:'/services-list-svg/13.svg',
-                    },
-                    {
-                         list_item_name:'Установить кастомное водяное охлаждение',
-                         list_item_svg_link:'/services-list-svg/14.svg',
-                    },
-               ]
-          },
-     ]
+const list_info = [
+     {
+          title:'Апгрейд-центр',
+          description:'Место, где мы преображаем Ваши ПК как изнутри, так и снаружи. Здесь наши специалисты с многолетним опытом подарят новую жизнь вашему верному стальному другу.',
+          link_to:'/assistance/tech-support',
+          services_list:[
+               {
+                    list_item_name:'Обновить видеокарту',
+                    list_item_svg_link:'/services-list-svg/1.svg',
+               },
+               {
+                    list_item_name:'Увеличить объём ОЗУ',
+                    list_item_svg_link:'/services-list-svg/2.svg',
+               },
+               {
+                    list_item_name:'Подобрать новый процессор',
+                    list_item_svg_link:'/services-list-svg/3.svg',
+               },
+               {
+                    list_item_name:'Улучшить систему охлаждения',
+                    list_item_svg_link:'/services-list-svg/4.svg',
+               },
+          ]
+     },
+     {
+          title:'Техническое обслуживание',
+          description:'Здоровый компьютер – залог успеха в играх, работе и творчестве. Наши профессионалы позаботятся о вашем ПК, проведя все необходимые процедуры.',
+          link_to:'/assistance/tech-support',
+          services_list:[
+               {
+                    list_item_name:'Проведём профессиональную чистку системы',
+                    list_item_svg_link:'/services-list-svg/5.svg',
+               },
+               {
+                    list_item_name:'Обслужить кастомное водяное охлаждение',
+                    list_item_svg_link:'/services-list-svg/6.svg',
+               },
+               {
+                    list_item_name:'Заменить термоинтерфейс',
+                    list_item_svg_link:'/services-list-svg/7.svg',
+               },
+               {
+                    list_item_name:'Оптимизировать ОС',
+                    list_item_svg_link:'/services-list-svg/8.svg',
+               },
+          ]
+     },
+     {
+          title:'Сервис-центр',
+          description:'Опытные сотрудники проведут полную диагностику ПК и устранят проблему, чтобы вы могли без лишних забот наслаждаться стабильной работой вашего компьютера.',
+          link_to:'/assistance/tech-support',
+          services_list:[
+               {
+                    list_item_name:'Проведем полную диагностику',
+                    list_item_svg_link:'/services-list-svg/9.svg',
+               },
+               {
+                    list_item_name:'Заменим неисправные комплектующие',
+                    list_item_svg_link:'/services-list-svg/10.svg',
+               },
+          ]
+     },
+     {
+          title:'Моддинг',
+          description:'Реализуем все ваши самые интересные задумки по дизайну ПК. Наши мастера создадут уникальный внешний вид вашего компьютера, учитывая все ваши пожелания.',
+          link_to:'/assistance/tech-support',
+          services_list:[
+               {
+                    list_item_name:'Нанести винил по вашему эскизу',
+                    list_item_svg_link:'/services-list-svg/11.svg',
+               },
+               {
+                    list_item_name:'Сделать профессиональную аэрографию',
+                    list_item_svg_link:'/services-list-svg/12.svg',
+               },
+               {
+                    list_item_name:'Использовать автомобильную покраску',
+                    list_item_svg_link:'/services-list-svg/13.svg',
+               },
+               {
+                    list_item_name:'Установить кастомное водяное охлаждение',
+                    list_item_svg_link:'/services-list-svg/14.svg',
+               },
+          ]
+     },
+]
 
 const ServicesSection = () => {
 
