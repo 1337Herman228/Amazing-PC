@@ -1,0 +1,72 @@
+@import '../../styles/style.scss';
+
+.second-header{
+     position: fixed;
+     width: 100%;
+     z-index: 1000;
+     background-color: var(--tm-color-dark-black);
+     box-shadow: 0 -0.2px 0 var(--tm-color-dark-white), 0 0.2px 0 var(--tm-color-dark-white);
+     backdrop-filter: blur(10px);
+
+     .second-navbar{
+          height: 50px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-inline: 40px;
+     
+          &__title{
+               font-size: 24px;
+               text-transform: uppercase;
+               padding: 10px 10px;
+          }
+     
+          .nav-list{
+               display: flex;
+               // gap:30px;
+     
+               &__item{
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    color: var(--tm-color-dark-white);
+                    padding: 7px 15px;
+                    transition-duration: var(--transition-duration);
+                    position: relative;
+
+                    @include tablet{
+                         font-size: 10px;
+                         padding: 9px 10px;
+                    }
+
+                    @include hover{
+                         color: var(--tm-color-white);
+                         &::after{
+                             width:100%;
+                             color: var(--tm-color-lime)
+                         }
+                    }
+ 
+                    &::after{
+                         content:'';
+                         position: absolute;
+                         top:100%;
+                         left:50%;
+                         translate:-50%;
+                         width: 0;   
+                         height: 0.5px;
+                         background-color: var(--tm-color-lime);
+                         transition-duration: inherit;
+                    }
+          
+               }
+
+               &__item.active{
+                    color: var(--tm-color-white);
+                    &::after{
+                         width:100%;
+                    }
+               }
+          }
+     }
+}

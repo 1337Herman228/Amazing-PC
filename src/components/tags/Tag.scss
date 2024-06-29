@@ -8,18 +8,18 @@
     // max-width: 385px;
 
     &__title{
-        font-size:18px;
+        font-size: clamp(15px, 2vw, 18px)
     }
 
     &__body{
-        font-size: clamp(25px, 2vw, 32px);
+        font-size: clamp(15px, 2vw, 32px);
 
         // &-prefix{
 
         // }
 
         &-main-value{
-            font-size:clamp(35px, 3.4vw, 64px);
+            font-size:clamp(30px, 3.4vw, 64px);
         }
 
         // &-postfix{

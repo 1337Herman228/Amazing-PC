@@ -191,6 +191,22 @@ hr{
     }
 }
 
+.transparent-link-with-border{
+    
+    @include flex-center;
+    background-color: transparent;
+    border: 1px solid var(--tm-color-dark-grey-2);
+    color:white;
+    padding: 8px 12px;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition-duration: var(--transition-duration);
+
+    @include hover{
+        border: 1px solid var(--tm-color-dark-white);
+    }
+}
+
 .mark{
     font-size: 15px;
     font-weight: 300;

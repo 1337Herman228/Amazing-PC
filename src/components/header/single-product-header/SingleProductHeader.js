@@ -51,7 +51,7 @@ const SingleProductHeader = ({header_info}) => {
 
      return(
           <>
-          <section style={bgImg} className='single-product-header'>
+          <section id='start' style={bgImg} className='single-product-header'>
                <div className='single-product-header__body container section'>
                     <div className='breadcrumbs'>
                          <Link href='/' className='breadcrumbs__link'>Главная</Link>

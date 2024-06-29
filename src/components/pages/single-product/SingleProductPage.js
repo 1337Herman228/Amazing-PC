@@ -2,7 +2,7 @@
 
 import SingleProductHeader from "@/components/header/single-product-header/SingleProductHeader"
 import Loading from "@/components/loading/Loading";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from 'next/navigation'
 
 import './SPP.scss'
@@ -11,6 +11,7 @@ import Slider from "@/components/slider/Slider";
 import { Image } from 'antd';
 import Tag from "@/components/tags/Tag";
 import ConfigurationCard from "./ConfigurationCard";
+import SecondNavbar from "@/components/navbar/SecondNavbar";
 
 const header_info = [
      {
@@ -32,6 +33,7 @@ const products = [
      {
           _id:'0',
           name:'One',
+          category:'pc',
           design:{
                title:'МОЩНОСТЬ И НАДЕЖНОСТЬ',
                description:'Компьютер ONE выполнен без излишеств. Каждый компонент, начиная от корпуса и заканчивая системой охлаждения, создан, чтобы обеспечить максимальную производительность, надежность и долговечность. Идеальное сочетание цены и качества делает компьютеры серии ONE самыми оптимальными игровыми системами HYPERPC. То, что нужно начинающим геймерам.',
@@ -111,6 +113,8 @@ const products = [
                     case:'DeepCool CC360 ARGB',
                     os:'Microsoft Windows 11 Home OEM',
                },
+               
+               
           ]
 
      },
@@ -159,9 +163,9 @@ const SingleProductPage = ({product_name}) => {
           { isLoading ? 
                <Loading /> : 
                <>
+                    <SecondNavbar productInfo={productInfo}/>
                     <SingleProductHeader header_info={headerInfo}/>
-
-                    <section className="design container section">
+                    <section id='design' className="design container section">
                          <img
                               className='design__img'
                               src={productInfo.design.img}
@@ -186,7 +190,7 @@ const SingleProductPage = ({product_name}) => {
                          </div>
                     </section>
 
-                    <section className="preview container section">
+                    <section id='preview' className="preview container section">
                          <img
                               className='preview__img'
                               src={productInfo.preview.main_img}
@@ -205,7 +209,7 @@ const SingleProductPage = ({product_name}) => {
                          </div>
                     </section>
 
-                    <section className="performance container section">
+                    <section id='performance' className="performance container section">
                          <div className="power">
                               <img
                                    className='power__img'
@@ -291,7 +295,7 @@ const SingleProductPage = ({product_name}) => {
                          </div>
                     </section>
 
-                    <section className="kits-and-prices-bg-container container-fluid">
+                    <section id='kits-and-prices' className="kits-and-prices-bg-container container-fluid">
                          <div className="kits-and-prices container section">
                               <div className="kits-and-prices__header">
                                    <span className="kits-and-prices__header-mark mark-gray-green">Комплектации и цены</span>
@@ -301,12 +305,23 @@ const SingleProductPage = ({product_name}) => {
                                    {productInfo.configurations.map((kit,index)=>{
                                         return(
                                              <ConfigurationCard 
+                                                  isNotebook={productInfo.category === 'notebook'}
                                                   key={index} 
                                                   img={kit.img}
                                                   name={kit.configuration_name} 
                                                   price={kit.configuration_price}
                                                   description={kit.configuration_description}
                                                   link_to_configurator={kit.link_to_configurator}
+                                                  gpu={kit.gpu}
+                                                  cpu={kit.cpu}
+                                                  mb={kit.mb}
+                                                  cpu_fan={kit.cpu_fan}
+                                                  ram={kit.ram}
+                                                  ssd={kit.ssd}
+                                                  pow_sup={kit.pow_sup}
+                                                  _case={kit.case}
+                                                  os={kit.os}
+                                                  display={kit.display}
                                              />
                                         ) 
                                    })}

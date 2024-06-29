@@ -378,6 +378,7 @@
 
           &-title{
                font-size:56px;
+               font-size:clamp(40px, 4vw, 56px);
                font-weight: 400;
                text-transform: uppercase;
                margin-top: 20px;
@@ -386,7 +387,15 @@
 
      &-body{
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 15px;
+
+          @media (max-width: 1250px) {
+               grid-template-columns: repeat(2, 1fr);
+          }
+
+          @media (max-width: 950px) {
+               grid-template-columns: 1fr;
+          }
      }
 }
