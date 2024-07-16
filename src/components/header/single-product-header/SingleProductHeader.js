@@ -65,7 +65,7 @@ const SingleProductHeader = ({header_info}) => {
                          <div className='information__description'>
                               <p>{header_info.description}</p>
                          </div>
-                         <Link href={pathname + '#buy'} className='information__link link-more-details'>
+                         <Link href='#kits-and-prices' className='information__link link-more-details'>
                               <img
                                    className='information__link__img'
                                    src='/arrow-down.svg'

@@ -1,7 +1,7 @@
 import "../styles/style.scss";
 import './layout.scss';
 import Navbar from "../components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
+import Footer from "../components/footer/Footer";
 
 export const metadata = {
   title: "Amazing PC",
@@ -11,13 +11,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        <main className="main-body">
-            {children}
-        </main>
-        <Footer/>
-      </body>
+        <body>
+          <Navbar />
+          <main className="main-body">
+              {children}
+          </main>
+          <Footer/>
+        </body>
     </html>
   );
 }

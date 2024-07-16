@@ -9,15 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.6",
     "antd": "^5.18.1",
+    "antd-style": "^3.6.2",
     "next": "14.2.4",
     "primereact": "^10.6.6",
     "react": "^18",
     "react-dom": "^18",
+    "react-redux": "^9.1.2",
     "sass": "^1.77.5"
   },
   "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.5.3"
   }
 }

@@ -26,6 +26,12 @@ const header_info = [
           img:'/single-product/one/hyperpc-one-banner.jpg',
           img_mobile:'/single-product/one/hyperpc-one-mobile.jpg',
      },
+     {
+          title:'Play 17',
+          description:'ONE – оптимальный старт в мир современного гейминга.',
+          img:'/single-product/play-17/hyperpc-play-17-idn-intro.jpg',
+          img_mobile:'/single-product/play-17/hyperpc-play-17-idn-intro-mobile.jpg',
+     },
 
 ]
 
@@ -55,6 +61,7 @@ const products = [
           },
           performance:{
                img:'/single-product/one/hyperpc-one-block-performance.jpg',
+               img_2:'/single-product/one/hyperpc-one-block-memory.jpg',
                title:'ПЕРЕДОВАЯ МОЩНОСТЬ',
                description:'Компьютеры ONE построены на базе передовых компьютерных комплектующих: процессоров Intel Core 12-го и 14-го поколения, а также видеокарт NVIDIA с поддержкой последних графических технологий, таких как трассировка лучей, генерация кадров и сглаживание DLSS. Эти комплектующие гарантируют высокую производительность не только в играх, но и в сложных профессиональных программах. Неважно, чем вы будете заниматься, графическим дизайном, архитектурным проектированием или 3D моделированием. Компьютеры ONE станут надежной платформой для решения ваших творческих задач.',
           },
@@ -111,6 +118,174 @@ const products = [
                     ssd:'1TB ADATA LEGEND 800 [3500MB/s, Gen4]',
                     pow_sup:'650W DeepCool PK550D [80+ Bronze]',
                     case:'DeepCool CC360 ARGB',
+                    os:'Microsoft Windows 11 Home OEM',
+               },
+               
+               
+          ]
+
+     },
+     {
+          _id:'1',
+          name:'Lumen core',
+          category:'pc',
+          design:{
+               title:'МОЩНОСТЬ И НАДЕЖНОСТЬ',
+               description:'Компьютер ONE выполнен без излишеств. Каждый компонент, начиная от корпуса и заканчивая системой охлаждения, создан, чтобы обеспечить максимальную производительность, надежность и долговечность. Идеальное сочетание цены и качества делает компьютеры серии ONE самыми оптимальными игровыми системами HYPERPC. То, что нужно начинающим геймерам.',
+               min_price:'5000',
+               img:'/single-product/one/hyperpc-one-block-design.jpg',
+          },
+          preview:{
+               main_img:'/single-product/one/hyperpc-one-block-gallery.jpg',
+               title:'ГАРМОНИЯ СТИЛЯ',
+               description:'ONE - это компьютер с элегантным черным корпусом, дополненным яркими A-RGB вентиляторами и изящными прямыми линиями, идеально вписывающимися в любой интерьер. Высококачественная сталь обеспечивает прочную фиксацию комплектующих, а стильная сетчатая передняя панель и прозрачное смотровое окно подчеркивают эксклюзивность и уникальность дизайна.',
+               slider_images:[
+                    '/single-product/one/hyperpc-one-block-design.jpg',
+                    '/single-product/one/hyperpc-one-1.jpg',
+                    '/single-product/one/hyperpc-one-block-design.jpg',
+                    '/single-product/one/hyperpc-one-1.jpg',
+                    '/single-product/one/hyperpc-one-block-design.jpg',
+                    '/single-product/one/hyperpc-one-1.jpg',
+               ]
+          },
+          performance:{
+               img:'/single-product/one/hyperpc-one-block-performance.jpg',
+               img_2:'/single-product/one/hyperpc-one-block-memory.jpg',
+               title:'ПЕРЕДОВАЯ МОЩНОСТЬ',
+               description:'Компьютеры ONE построены на базе передовых компьютерных комплектующих: процессоров Intel Core 12-го и 14-го поколения, а также видеокарт NVIDIA с поддержкой последних графических технологий, таких как трассировка лучей, генерация кадров и сглаживание DLSS. Эти комплектующие гарантируют высокую производительность не только в играх, но и в сложных профессиональных программах. Неважно, чем вы будете заниматься, графическим дизайном, архитектурным проектированием или 3D моделированием. Компьютеры ONE станут надежной платформой для решения ваших творческих задач.',
+          },
+          configurations:[
+               {
+                    _id:'0',
+                    configuration_id:'0',
+                    configuration_name:'One Start',
+                    configuration_description:'Игровая платформа, построенная на базе процессора Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокарты Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA].',
+                    configuration_price:'5000',
+                    link_to_configurator:'/one-start/config',
+                    img:'/gaming-pc/one.jpg', //взять в другой таблице
+                    gpu:'Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]',
+                    cpu:'Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]',
+                    mb:'MSI PRO B760M-A [DDR4, Wi-Fi]',
+                    cpu_fan:'DeepCool AG400 BK ARGB',
+                    ram:'16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]',
+                    ssd:'500GB ADATA LEGEND 800 [3500MB/s, Gen4]',
+                    pow_sup:'550W DeepCool PK550D [80+ Bronze]',
+                    case:'DeepCool CC360 ARGB',
+                    os:'Microsoft Windows 11 Home OEM',
+               },
+               {
+                    _id:'0',
+                    configuration_id:'1',
+                    configuration_name:'One Max',
+                    configuration_description:'Геймерская система с процессором Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокартой Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA].',
+                    configuration_price:'5900',
+                    link_to_configurator:'/one-max/config',
+                    img:'/gaming-pc/one.jpg', //взять в другой таблице
+                    gpu:'Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]',
+                    cpu:'Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]',
+                    mb:'MSI PRO B760M-A [DDR5, Wi-Fi]',
+                    cpu_fan:'DeepCool AG400 BK ARGB',
+                    ram:'32GB TEAMGROUP T-Force Delta RGB Black [DDR5, 5600MHz, 2x16GB]',
+                    ssd:'1TB ADATA LEGEND 800 [3500MB/s, Gen4]',
+                    pow_sup:'550W DeepCool PK550D [80+ Bronze]',
+                    case:'DeepCool CC360 ARGB',
+                    os:'Microsoft Windows 11 Home OEM',
+               },
+               {
+                    _id:'0',
+                    configuration_id:'2',
+                    configuration_name:'One Ultra',
+                    configuration_description:'Платформа для гейминга в Full HD разрешении, созданная на базе центрального процессора Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокарты Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA].',
+                    configuration_price:'6800',
+                    link_to_configurator:'/one-ultra/config',
+                    img:'/gaming-pc/one.jpg', //взять в другой таблице
+                    gpu:'Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA]',
+                    cpu:'Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]',
+                    mb:'MSI PRO B760M-A [DDR5, Wi-Fi]',
+                    cpu_fan:'DeepCool AG400 BK ARGB',
+                    ram:'32GB TEAMGROUP T-Force Delta RGB Black [DDR5, 5600MHz, 2x16GB]',
+                    ssd:'1TB ADATA LEGEND 800 [3500MB/s, Gen4]',
+                    pow_sup:'650W DeepCool PK550D [80+ Bronze]',
+                    case:'DeepCool CC360 ARGB',
+                    os:'Microsoft Windows 11 Home OEM',
+               },
+               
+               
+          ]
+
+     },
+     {
+          _id:'2',
+          name:'play 17',
+          category:'notebook',
+          design:{
+               title:'МОЩНОСТЬ И НАДЕЖНОСТЬ',
+               description:'Компьютер ONE выполнен без излишеств. Каждый компонент, начиная от корпуса и заканчивая системой охлаждения, создан, чтобы обеспечить максимальную производительность, надежность и долговечность. Идеальное сочетание цены и качества делает компьютеры серии ONE самыми оптимальными игровыми системами HYPERPC. То, что нужно начинающим геймерам.',
+               min_price:'5000',
+               img:'/single-product/play-17/hyperpc-play-17-design.jpg',
+          },
+          preview:{
+               main_img:'/single-product/play-17/hyperpc-play-17-preview-1.jpg',
+               title:'ГАРМОНИЯ СТИЛЯ',
+               description:'ONE - это компьютер с элегантным черным корпусом, дополненным яркими A-RGB вентиляторами и изящными прямыми линиями, идеально вписывающимися в любой интерьер. Высококачественная сталь обеспечивает прочную фиксацию комплектующих, а стильная сетчатая передняя панель и прозрачное смотровое окно подчеркивают эксклюзивность и уникальность дизайна.',
+               slider_images:[
+                    '/single-product/play-17/hyperpc-play-17-preview-1.jpg',
+                    '/single-product/play-17/hyperpc-play-17-preview-2.jpg',
+                    '/single-product/play-17/hyperpc-play-17-preview-3.jpg',
+                    '/single-product/play-17/hyperpc-play-17-preview-4.jpg',
+                    '/single-product/play-17/hyperpc-play-17-preview-5.jpg',
+               ]
+          },
+          performance:{
+               img:'/single-product/play-17/hyperpc-play-17-idn-performance.jpg',
+               img_2:'/single-product/play-17/hyperpc-play-17-idn-interface.jpg',
+               title:'ПЕРЕДОВАЯ МОЩНОСТЬ',
+               description:'Компьютеры ONE построены на базе передовых компьютерных комплектующих: процессоров Intel Core 12-го и 14-го поколения, а также видеокарт NVIDIA с поддержкой последних графических технологий, таких как трассировка лучей, генерация кадров и сглаживание DLSS. Эти комплектующие гарантируют высокую производительность не только в играх, но и в сложных профессиональных программах. Неважно, чем вы будете заниматься, графическим дизайном, архитектурным проектированием или 3D моделированием. Компьютеры ONE станут надежной платформой для решения ваших творческих задач.',
+          },
+          configurations:[
+               {
+                    _id:'0',
+                    configuration_id:'0',
+                    configuration_name:'One Start',
+                    configuration_description:'Игровая платформа, построенная на базе процессора Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокарты Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA].',
+                    configuration_price:'5000',
+                    link_to_configurator:'/one-start/config',
+                    img:'/notebooks/hyperpc-play.jpg', //взять в другой таблице
+                    gpu:'Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]',
+                    cpu:'Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]',
+                    display:'17", 2560 x 1600px, 240 Гц, IPS',
+                    ram:'16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]',
+                    ssd:'500GB ADATA LEGEND 800 [3500MB/s, Gen4]',
+                    os:'Microsoft Windows 11 Home OEM',
+               },
+               {
+                    _id:'0',
+                    configuration_id:'1',
+                    configuration_name:'One Max',
+                    configuration_description:'Геймерская система с процессором Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокартой Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA].',
+                    configuration_price:'5900',
+                    link_to_configurator:'/one-max/config',
+                    img:'/notebooks/hyperpc-play.jpg', //взять в другой таблице
+                    gpu:'Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]',
+                    cpu:'Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]',
+                    display:'17", 2560 x 1600px, 240 Гц, IPS',
+                    ram:'16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]',
+                    ssd:'500GB ADATA LEGEND 800 [3500MB/s, Gen4]',
+                    os:'Microsoft Windows 11 Home OEM',
+               },
+               {
+                    _id:'0',
+                    configuration_id:'2',
+                    configuration_name:'One Ultra',
+                    configuration_description:'Платформа для гейминга в Full HD разрешении, созданная на базе центрального процессора Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокарты Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA].',
+                    configuration_price:'6800',
+                    link_to_configurator:'/one-ultra/config',
+                    img:'/notebooks/hyperpc-play.jpg', //взять в другой таблице
+                    gpu:'Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]',
+                    cpu:'Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]',
+                    display:'17", 2560 x 1600px, 240 Гц, IPS',
+                    ram:'16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]',
+                    ssd:'500GB ADATA LEGEND 800 [3500MB/s, Gen4]',
                     os:'Microsoft Windows 11 Home OEM',
                },
                
@@ -273,7 +448,7 @@ const SingleProductPage = ({product_name}) => {
                               <div className="ram-and-storage-body">
                                    <img
                                         className='ram-and-storage-body__img'
-                                        src='/single-product/one/hyperpc-one-block-memory.jpg'
+                                        src={productInfo.performance.img_2}
                                         alt='Ram and Storage'
                                         loading='lazy'
                                    />

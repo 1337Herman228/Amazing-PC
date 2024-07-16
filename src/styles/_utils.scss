@@ -19,6 +19,17 @@
     }
 }
 
+.section-decreased{
+    padding-inline: calc(var(--padding-inline-desktop) - 20px);
+
+    @include tablet{
+        padding-inline: var(--padding-inline-tablet);
+    }
+    @include mobile{
+        padding-inline: var(--padding-inline-mobile);
+    }
+}
+
 .visually-hidden{
     position: absolute !important;
     width: 1px !important;

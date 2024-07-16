@@ -22,11 +22,11 @@ const notebooks = [
      {
           _id:'0',
           category_id:'0',
-          name:'HYPERPC',
+          name:'play 17',
           description:'Игровые ноутбки HYPERPC',
           img:'/notebooks/hyperpc-play.jpg',
           min_price:'8800',
-          link_to_pc:'/one',
+          link_to_pc:'/notebook/play-17',
           link_to_configurator:'/one/config',
           gpu_description:'Графические карты GeForce RTX 4060 и 4060 Ti',
           cpu_description:'Процессоры 6 и 10 ядерные Intel Core i5',
