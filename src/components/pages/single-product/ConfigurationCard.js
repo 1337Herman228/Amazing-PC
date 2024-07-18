@@ -3,7 +3,7 @@ import './ConfigurationCard.scss';
 import { Rate } from 'antd';
 import '../../../styles/style.scss';
 import ButtonToCart from '@/components/buttons/btn-to-cart/ButtonToCart';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const ConfigurationCard =(
     {
@@ -24,6 +24,25 @@ const ConfigurationCard =(
         display,
         isNotebook
     })=>{
+
+        const product = {
+            'img': img,
+            'name': name,
+            'price': price,
+            'description': description,
+            'link_to_configurator': link_to_configurator,
+            'gpu': gpu,
+            'cpu': cpu,
+            'mb': mb,
+            'cpu_fan': cpu_fan,
+            'ram': ram,
+            'ssd': ssd,
+            'pow_sup':pow_sup,
+            '_case': _case,
+            'os': os,
+            'display': display,
+            'isNotebook': isNotebook
+       }
 
     const Img = ({src}) => {
         return(
@@ -77,7 +96,9 @@ const ConfigurationCard =(
                             Цена {price} BYN
                         </span>
                         <span className='configuration-card__buy-btn'>
-                            <ButtonToCart />
+
+                            <ButtonToCart product={product}/>
+
                         </span>
                     </div>
                     <hr/>

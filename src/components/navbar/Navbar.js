@@ -3,11 +3,20 @@
 import Link from "next/link";
 import './Navbar.scss'
 
-import { useRouter } from "next/navigation";
-import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from "react";
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from "react";
+import CartWindow from "./CartWindow";
+import { useDispatch, useSelector } from "react-redux"
 
-export default function Users() {
+export default function Navbar() {
+
+    const [isCartWindowOpen, setIsCartWindowOpen] = useState(false)
+    const [cartProductCount, setCartProductCount] = useState(0)
+
+    const cart_items = useSelector(state => state.cart)
+    useEffect(()=>{ 
+        setCartProductCount(cart_items.items.length)
+    },[cart_items])
 
     const openModal = () => {
         const dialog = document.getElementById('mobileOverlay');
@@ -70,45 +79,55 @@ export default function Users() {
                     </ul>
                 </nav>
 
-                <nav className="header__side-button-menu">
-                    <ul className="header__side-button-menu-list">
-                        <li className="header__side-button-menu-item">
+                {/* <nav className="header__side-button-menu"> */}
+                    <nav className="header__side-button-menu-list">
+                        {/* <li className="header__side-button-menu-item"> */}
                             <button className="header__side-button-menu-btn">
                                 <img 
-                                    className="search__icon-img" 
+                                    className="btn-icon" 
                                     src="/search-icon.svg"
                                     alt="Search" 
-                                    width={16} 
-                                    height={16} 
+                                    width={22} 
+                                    height={22} 
                                     loading="lazy"
                                 />
                             </button>
-                        </li>
-                        <li className="header__side-button-menu-item">
-                            <button className="header__side-button-menu-btn">
+                        {/* </li> */}
+                        {/* <li className="header__side-button-menu-item"> */}
+                            <button 
+                                className="header__side-button-menu-btn btn--count-mark"
+                                data-custom="0"
+                            >
                                 <img 
-                                    className="compare__icon-img" 
-                                    src="/compare-icon.svg"
+                                    className="btn-icon" 
+                                    src="/compare-icon-nav.svg"
                                     alt="Compare" 
-                                    width={16} 
-                                    height={16} 
+                                    width={22} 
+                                    height={22} 
                                     loading="lazy"
                                 />
                             </button>
-                        </li>
-                        <li className="header__side-button-menu-item">
-                            <button className="header__side-button-menu-btn">
-                                <img 
-                                    className="cart__icon-img" 
-                                    src="/cart-icon.svg"
-                                    alt="Cart" 
-                                    width={16} 
-                                    height={16} 
-                                    loading="lazy"
-                                />
+                        {/* </li> */}
+                        {/* <li className="header__side-button-menu-item"> */}
+                                <button 
+                                    className={`header__side-button-menu-btn ${cartProductCount>0 &&'btn--count-mark'}`}
+                                    data-custom={cartProductCount}
+                                    onClick={() => setIsCartWindowOpen(!isCartWindowOpen)}
+                                >
+                                    <img 
+                                        className="btn-icon" 
+                                        src="/cart-icon.svg"
+                                        alt="Cart" 
+                                        width={22} 
+                                        height={22} 
+                                        loading="lazy"
+                                    />
                             </button>
-                        </li>
-                        <li className="header__side-button-menu-item">
+
+                            <CartWindow isCartWindowOpen={isCartWindowOpen} setIsCartWindowOpen={setIsCartWindowOpen}/>
+                            
+                        {/* </li> */}
+                        {/* <li className="header__side-button-menu-item"> */}
 
                         <button
                             onClick={openModal}
@@ -117,10 +136,10 @@ export default function Users() {
                                     Open navigation menu
                                 </span>
                         </button>
-                        </li>
-                    </ul>
+                        {/* </li> */}
+                    </nav>
                   
-                </nav>
+                {/* </nav> */}
             </div>
     </header>
 

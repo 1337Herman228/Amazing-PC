@@ -30,15 +30,15 @@ const SecondNavbar =({productInfo})=>{
           var scrollPosition = window.scrollY || window.pageYOffset;
           
           for (var i = 0; i < blocks.length; i++) {
-               var blockTop = blocks[i].offsetTop - 85;
-               var blockBottom = blockTop + blocks[i].offsetHeight - 10;
+               var blockTop = blocks[i]?.offsetTop - 85;
+               var blockBottom = blockTop + blocks[i]?.offsetHeight - 10;
           
                if (scrollPosition >= blockTop && scrollPosition <= blockBottom) {
-                    navbarLinks[i].classList.add("active");
-                    mobileNavbarLinks[i].classList.add("active");
+                    navbarLinks[i]?.classList.add("active");
+                    mobileNavbarLinks[i]?.classList.add("active");
                } else {
-                    navbarLinks[i].classList.remove("active");
-                    mobileNavbarLinks[i].classList.remove("active");
+                    navbarLinks[i]?.classList.remove("active");
+                    mobileNavbarLinks[i]?.classList.remove("active");
                }
           }
      };
