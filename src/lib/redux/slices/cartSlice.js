@@ -3,59 +3,132 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  items:[
+  items:
+    [
       {
-          "img": "/gaming-pc/one.jpg",
-          "name": "One Start",
-          "price": "5000",
-          "description": "Игровая платформа, построенная на базе процессора Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокарты Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA].",
-          "link_to_configurator": "/one-start/config",
-          "gpu": "Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]",
-          "cpu": "Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]",
-          "mb": "MSI PRO B760M-A [DDR4, Wi-Fi]",
-          "cpu_fan": "DeepCool AG400 BK ARGB",
-          "ram": "16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]",
-          "ssd": "500GB ADATA LEGEND 800 [3500MB/s, Gen4]",
-          "pow_sup": "550W DeepCool PK550D [80+ Bronze]",
-          "_case": "DeepCool CC360 ARGB",
-          "os": "Microsoft Windows 11 Home OEM",
-          "isNotebook": false
+          "id": 22,
+          "partition": "24″",
+          "name": "Dell Alienware AW2523HF",
+          "price": 800,
+          "img": "/components/monitor/dell-alienware-aw2523hf-314x177.jpg",
+          "category": "Переферия",
+          "title": "Монитор",
+          "quantity": 1
       },
       {
-          "img": "/gaming-pc/one.jpg",
-          "name": "One Max",
-          "price": "5900",
-          "description": "Геймерская система с процессором Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокартой Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA].",
-          "link_to_configurator": "/one-max/config",
-          "gpu": "Palit GeForce RTX 4060 Dual [8GB, 3072 CUDA]",
-          "cpu": "Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]",
-          "mb": "MSI PRO B760M-A [DDR5, Wi-Fi]",
-          "cpu_fan": "DeepCool AG400 BK ARGB",
-          "ram": "32GB TEAMGROUP T-Force Delta RGB Black [DDR5, 5600MHz, 2x16GB]",
-          "ssd": "1TB ADATA LEGEND 800 [3500MB/s, Gen4]",
-          "pow_sup": "550W DeepCool PK550D [80+ Bronze]",
-          "_case": "DeepCool CC360 ARGB",
-          "os": "Microsoft Windows 11 Home OEM",
-          "isNotebook": false
+          "id": 31,
+          "partition": "27″",
+          "name": "LG UltraGear 27GR75Q",
+          "price": 400,
+          "img": "/components/monitor/lg-ultragear-27gr75q-b-314x177.jpg",
+          "category": "Переферия",
+          "title": "Монитор",
+          "quantity": 1
       },
       {
-          "img": "/gaming-pc/one.jpg",
-          "name": "One Ultra",
-          "price": "6800",
-          "description": "Платформа для гейминга в Full HD разрешении, созданная на базе центрального процессора Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер] и видеокарты Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA].",
-          "link_to_configurator": "/one-ultra/config",
-          "gpu": "Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA]",
-          "cpu": "Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]",
-          "mb": "MSI PRO B760M-A [DDR5, Wi-Fi]",
-          "cpu_fan": "DeepCool AG400 BK ARGB",
-          "ram": "32GB TEAMGROUP T-Force Delta RGB Black [DDR5, 5600MHz, 2x16GB]",
-          "ssd": "1TB ADATA LEGEND 800 [3500MB/s, Gen4]",
-          "pow_sup": "650W DeepCool PK550D [80+ Bronze]",
-          "_case": "DeepCool CC360 ARGB",
-          "os": "Microsoft Windows 11 Home OEM",
-          "isNotebook": false
+          "id": 21,
+          "partition": "24″",
+          "name": "LG UltraGear 24GN65R",
+          "price": 300,
+          "img": "/components/monitor/lg-ultragear-24gn65r-b-314x177.jpg",
+          "category": "Переферия",
+          "title": "Монитор",
+          "quantity": 1
+      },
+      {
+          "id": 12,
+          "partition": "Razer",
+          "name": "Razer Viper",
+          "price": 230,
+          "img": "/components/mouse/razer-basilisk-v2.jpg",
+          "category": "Переферия",
+          "title": "Мышь",
+          "quantity": 1
+      },
+      {
+          "name": "Конфигурация",
+          "id": "2f204fa1-caa6-492d-a0b4-3727f624df4b",
+          "price": 7980,
+          "isPc": true,
+          "isConfiguration": true,
+          "img": "/components/case/deepcool-cc360-argb-314x177.jpg",
+          "gpu": {
+              "id": 11,
+              "partition": "RTX 4060",
+              "name": "Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA]",
+              "price": "3000",
+              "img": "/components/gpu/palit-rtx-4060-ti-dual.png",
+              "category": "Комплектующие",
+              "title": "Видеокарта"
+          },
+          "cpu": {
+              "id": 11,
+              "partition": "Intel Core 12th",
+              "name": "Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]",
+              "price": "1500",
+              "img": "/components/cpu/intel-core-i5-12th.jpg",
+              "category": "Комплектующие",
+              "title": "Процессор"
+          },
+          "motherboard": {
+              "id": 11,
+              "partition": "Intel B760",
+              "name": "MSI PRO B760M-A [DDR4, Wi-Fi]",
+              "price": "400",
+              "img": "/components/mb/msi-pro-b760m-awifi-314x177.jpg",
+              "category": "Комплектующие",
+              "title": "Материнская плата"
+          },
+          "cpu_fan": {
+              "id": 11,
+              "partition": "Asus",
+              "name": "ASUS ROG RYUO III 360 White",
+              "price": "450",
+              "img": "/components/cpu-fan/asus-rog-ryuo-iii-360-argb-white-314x177.jpg",
+              "category": "Комплектующие",
+              "title": "Охлаждение"
+          },
+          "ram": {
+              "id": 11,
+              "partition": "16 ГБ",
+              "name": "16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]",
+              "price": "220",
+              "img": "/components/ram/kingston-fury-beast-ddr4-rgb-2x-314x177.jpg",
+              "category": "Комплектующие",
+              "title": "Оперативная память"
+          },
+          "ssd": {
+              "0": {
+                  "id": 11,
+                  "partition": "500 ГБ",
+                  "name": "500GB ADATA LEGEND 800 [3500MB/s, Gen4]",
+                  "price": "300",
+                  "img": "/components/ssd/adata-legend-800-314x177.jpg"
+              },
+              "category": "Комплектующие",
+              "title": "SSD накопитель"
+          },
+          "power_supply": {
+              "id": 11,
+              "partition": "От 500W",
+              "name": "550W DeepCool PK550D [80+ Bronze]",
+              "price": "160",
+              "img": "/components/pow-sup/deepcool-pk550d-314x177.jpg",
+              "category": "Комплектующие",
+              "title": "Блок питания"
+          },
+          "case": {
+              "id": 22,
+              "partition": "Deepcool",
+              "name": "DeepCool CC360 ARGB",
+              "price": "220",
+              "img": "/components/case/deepcool-cc360-argb-314x177.jpg",
+              "category": "Комплектующие",
+              "title": "Корпус"
+          },
+          "quantity": 5
       }
-  ],
+    ],
   
   // loading:false,
   // error:false,
@@ -69,16 +142,19 @@ export const cartSlice = createSlice({
       //TODO: получение данных из БД
     },
     addCartItem: (state, action) => {
-      state.items.push(action.payload)
+      state.items = state.items.concat(action.payload)
     },
     deleteCartItem: (state, action) => {
-      state.items.filter(item => item.id !== action.payload)
+      state.items = state.items.filter(item => item.id !== action.payload)
+    },
+    changeItemQuantity: (state, action) => {
+      state.items.find(item => item.id === action.payload.id).quantity = action.payload.quantity
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { getCartItems, addCartItem, deleteCartItem } = cartSlice.actions
+export const { getCartItems, addCartItem, deleteCartItem, changeItemQuantity } = cartSlice.actions
 
 export default cartSlice.reducer
 

@@ -6,7 +6,7 @@ import './Navbar.scss'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from "react";
 import CartWindow from "./CartWindow";
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 export default function Navbar() {
 
@@ -15,7 +15,7 @@ export default function Navbar() {
 
     const cart_items = useSelector(state => state.cart)
     useEffect(()=>{ 
-        setCartProductCount(cart_items.items.length)
+        setCartProductCount(cart_items.items?.length)
     },[cart_items])
 
     const openModal = () => {

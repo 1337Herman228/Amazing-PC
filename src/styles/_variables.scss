@@ -1,4 +1,7 @@
 :root{
+    --main-color: #c0ff01;
+    --main-color-accent: #dcff71;
+
     --tm-color-lime: #c0ff01;
     --tm-color-light-lime: #dcff71;
     --tm-color-soft-lime: #ebffad;
@@ -39,7 +42,10 @@
     --configurator-contol-btn-color:#bebebe;
     --configurator-contol-btn-bg-color:#333;
     --configurator-contol-btn-bg-color-hover:#272727;
+
     --text-color-grey:#999;
+    --text-color-grey-light:#ccc;
+
     --nav-circle-default-color:#444;
 
     --border: 1px solid var(--tm-color-white);

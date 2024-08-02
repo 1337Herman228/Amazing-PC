@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Configurator.scss'
 import FormListItem from './form-list-item/FormListItem'
 import Summation from './summation/Summation'
@@ -19,6 +19,7 @@ const components_list = [
      {
           id: 1,
           name: 'Видеокарта',
+          type: 'gpu',
           category:'Комплектующие',
           partition:[
                'RTX 4060',
@@ -90,6 +91,7 @@ const components_list = [
      {
           id: 2,
           name: 'Процессор',
+          type: 'cpu',
           category:'Комплектующие',
           partition:[
                'Intel Core 12th',
@@ -152,6 +154,7 @@ const components_list = [
      {
           id: 3,
           name: 'Материнская плата',
+          type: 'motherboard',
           category:'Комплектующие',
           partition:[
                'Intel B760',
@@ -270,6 +273,7 @@ const components_list = [
      {
           id: 4,
           name: 'Охлаждение',
+          type: 'cpu_fan',
           category:'Комплектующие',
           partition:[
                'Asus',
@@ -368,6 +372,7 @@ const components_list = [
      {
           id: 5,
           name: 'Оперативная память',
+          type: 'ram',
           category:'Комплектующие',
           partition:[
                '16 ГБ',
@@ -503,6 +508,7 @@ const components_list = [
      {
           id: 6,
           name: 'SSD накопитель',
+          type: 'ssd',
           category:'Комплектующие',
           multiselect:true,
           default_checked:true,
@@ -589,6 +595,7 @@ const components_list = [
      {
           id: 7,
           name: 'Блок питания',
+          type: 'power_supply',
           category:'Комплектующие',
           partition:[
                'От 500W',
@@ -714,6 +721,7 @@ const components_list = [
      {
           id: 8,
           name: 'Корпус',
+          type: 'case',
           category:'Комплектующие',
           default_checked: false,
           partition:[
@@ -864,6 +872,7 @@ const components_list = [
           id: 9,
           name: 'Вентиляторы',
           category:'Комплектующие',
+          type: 'fans',
           multiselect: true,
           default_checked:false,
           max_quantity:20,
@@ -968,12 +977,12 @@ const components_list = [
      {
           id: 10,
           name: 'Монитор',
+          type: 'display',
           category:'Переферия',
           multiselect: true,
           default_checked:false,
           max_quantity:3,
           partition:[
-               'Рекомендуем',
                '24″',
                '27″',
                '32″',
@@ -982,140 +991,134 @@ const components_list = [
           ],
           items:[
                {
-                    id: 11,
-                    partition: 'Рекомендуем',
-                    name: 'Dell Alienware AW2523HF',
-                    price:'800',
-                    img:'/components/monitor/dell-alienware-aw2523hf-314x177.jpg',
-               },
-               {
-                    id: 12,
-                    partition: 'Рекомендуем',
-                    name: 'ASUS ROG SWIFT PG27AQDM',
-                    price:'1350',
-                    img:'/components/monitor/asus-rog-swift-pg27aqdm-314x177.jpg',
-               },
-               {
-                    id: 13,
-                    partition: 'Рекомендуем',
-                    name: 'MSI MPG 271QRX QD-OLED',
-                    price:'1650',
-                    img:'/components/monitor/msi-mpg-271qrx-qd-oled-314x177.jpg',
-               },
-               {
-                    id: 14,
-                    partition: 'Рекомендуем',
-                    name: 'MSI MPG 321URX QD-OLED',
-                    price:'2030',
-                    img:'/components/monitor/msi-mpg-321urx-qd-oled-314x177.jpg',
-               },
-               {
-                    id: 15,
-                    partition: 'Рекомендуем',
-                    name: 'Dell Alienware AW3423DWF',
-                    price:'2750',
-                    img:'/components/monitor/dell-alienware-aw3423dwf-314x177.jpg',
-               },
-               {
-                    id: 16,
-                    partition: 'Рекомендуем',
-                    name: 'Samsung Odyssey OLED G9 G93SC',
-                    price:'3300',
-                    img:'/components/monitor/samsung-odyssey-oled-g9-g93sc-alt-314x177.jpg',
-               },
-               {
                     id: 21,
                     partition: '24″',
                     name: 'LG UltraGear 24GN65R',
-                    price:'300',
+                    price:300,
                     img:'/components/monitor/lg-ultragear-24gn65r-b-314x177.jpg',
                },
                {
                     id: 22,
                     partition: '24″',
                     name: 'Dell Alienware AW2523HF',
-                    price:'800',
+                    price:800,
                     img:'/components/monitor/dell-alienware-aw2523hf-314x177.jpg',
                },
                {
                     id: 31,
                     partition: '27″',
                     name: 'LG UltraGear 27GR75Q',
-                    price:'400',
+                    price:400,
                     img:'/components/monitor/lg-ultragear-27gr75q-b-314x177.jpg',
                },
                {
                     id: 32,
                     partition: '27″',
                     name: 'LG UltraGear 27GP95R',
-                    price:'900',
+                    price:900,
                     img:'/components/monitor/lg-ultragear-27gp95r-314x177.jpg',
                },
                {
                     id: 33,
                     partition: '27″',
                     name: 'ASUS ROG SWIFT PG27AQDM',
-                    price:'1350',
+                    price:1350,
                     img:'/components/monitor/asus-rog-swift-pg27aqdm-314x177.jpg',
                },
                {
                     id: 34,
                     partition: '27″',
                     name: 'MSI MPG 271QRX QD-OLED',
-                    price:'1650',
+                    price:1650,
                     img:'/components/monitor/msi-mpg-271qrx-qd-oled-314x177.jpg',
                },
                {
                     id: 41,
                     partition: '32″',
                     name: 'LG UltraGear 32GQ950',
-                    price:'1800',
+                    price:1800,
                     img:'/components/monitor/lg-ultragear-32gq950-b-314x177.jpg',
                },
                {
                     id: 42,
                     partition: '32″',
                     name: 'MSI MPG 321URX QD-OLED',
-                    price:'2030',
+                    price:2030,
                     img:'/components/monitor/msi-mpg-321urx-qd-oled-314x177.jpg',
                },
                {
                     id: 43,
                     partition: '32″',
                     name: 'LG UltraGear 32GR93U',
-                    price:'1950',
+                    price:1950,
                     img:'/components/monitor/lg-ultragear-32gr93u-314x177.jpg',
                },
                {
                     id: 51,
                     partition: '34″',
                     name: 'Samsung Odyssey OLED G8 S34BG850SI',
-                    price:'2400',
+                    price:2400,
                     img:'/components/monitor/samsing-odyssey-oled-g8-s34bg850si-314x177.jpg',
                },
                {
                     id: 52,
                     partition: '34″',
                     name: 'Dell Alienware AW3423DWF',
-                    price:'2750',
+                    price:2750,
                     img:'/components/monitor/dell-alienware-aw3423dwf-314x177.jpg',
                },
                {
                     id: 61,
                     partition: '49″',
                     name: 'Samsung Odyssey OLED G9 G93SC',
-                    price:'3300',
+                    price:3300,
                     img:'/components/monitor/samsung-odyssey-oled-g9-g93sc-alt-314x177.jpg',
                },
                
           ]
      },
+     {
+          id: 11,
+          name: 'Мышь',
+          type: 'mouse',
+          category:'Переферия',
+          default_checked: false,
+          partition:[
+               'Razer',
+               'Logitech',
+          ],
+          items:[
+               {
+                    id: 11,
+                    partition: 'Razer',
+                    name: 'Razer Viper',
+                    price:200,
+                    img:'/components/mouse/razer-viper.jpg',
+               },
+               {
+                    id: 12,
+                    partition: 'Razer',
+                    name: 'Razer Viper',
+                    price:230,
+                    img:'/components/mouse/razer-basilisk-v2.jpg',
+               },
+               {
+                    id: 21,
+                    partition: 'Logitech',
+                    name: 'Logitech G305 Lightspeed Purple',
+                    price:180,
+                    img:'/components/mouse/logitech-g305-lightspeed-purple.jpg',
+               },
+          ]
+     },
+
+
 ]
 
 const Configurator = () => {
 
      const [product, setProduct] = useState({});
-     console.log(product)
+     console.log('product', product)
 
      const addItemToProduct = (name, item) => {
           product[`${name}`] = item
@@ -1138,6 +1141,7 @@ const Configurator = () => {
           
           return {uniqueCategories, allItems}
      }
+
      const {uniqueCategories, allItems} = makeNavTreeInfoArray()
 
      return(
@@ -1156,6 +1160,8 @@ const Configurator = () => {
                                    multiselect={item?.multiselect} 
                                    key={item.id} 
                                    name={item.name} 
+                                   type={item.type}
+                                   category = {item.category}
                                    partition={item.partition} 
                                    items={item.items}
                               />) 

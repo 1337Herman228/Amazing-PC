@@ -66,7 +66,7 @@ const CartWindow = ({isCartWindowOpen, setIsCartWindowOpen}) => {
                          :<span className='cart-list__empty-text'>В корзине пока ничего нет...</span>
                          }
                     </ul>
-                    <Link className='to-cart-link green-filled-link' href='/cart'>Перейти в корзину</Link>
+                    <Link onClick={() => setIsCartWindowOpen(false)} className='to-cart-link green-filled-link' href='/cart'>Перейти в корзину</Link>
                     <Link className='_cart-window__inner-link' href='#'>Мои конфигурации</Link>
                     <Link className='_cart-window__inner-link' href='#'>Мои заказы</Link>
                     <Link className='_cart-window__inner-link' href='#'>Войти</Link>

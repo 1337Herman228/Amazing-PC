@@ -7,7 +7,9 @@ import configuratorHook from '../configuratorHook'
 const FormListItem = (
      {
      name, 
+     type,
      partition, 
+     category,
      items, 
      multiselect, 
      default_checked = true, 
@@ -18,6 +20,8 @@ const FormListItem = (
      const [displayAppearance, setDisplayAppearance] = useState('list')
      const [filteredItems, setFilteredItems] = useState(items)
      const [selectedItem, setSelectedItem] = useState(multiselect ? (default_checked ? [items[0]]:[]) : default_checked ? items[0] : null)
+          // console.log('selectedItem',selectedItem)
+          // console.log('name',name)
 
      const {selectIcon} = configuratorHook()
 
@@ -36,12 +40,24 @@ const FormListItem = (
      }
 
      useEffect(() => {
+          addDefaultFields()
+     }, [])
+
+     useEffect(() => {
           alignGridItemWidth()
      }, [displayAppearance,filteredItems])
 
      useEffect(() => {
-          addItemToProduct(name, selectedItem)
+          addDefaultFields()
+          addItemToProduct(type, selectedItem)
      }, [selectedItem])
+
+     const addDefaultFields = () => {
+          if(selectedItem != null){
+               selectedItem.category = category // Устанавливаем категорию
+               selectedItem.title = name // Устанавливаем title
+          }
+     }
 
      const filterItems = (e) => {
           const btn = e.target

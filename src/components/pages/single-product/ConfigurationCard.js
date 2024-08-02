@@ -128,63 +128,63 @@ const ConfigurationCard =(
                         <Img src='/gaming-pc/components-svg/gpu.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Видеокарта:</span>
-                            <span className='components-list__item-info-name'>{gpu}</span>
+                            <span className='components-list__item-info-name'>{gpu.name}</span>
                         </div>
                     </li>
                     <li className='components-list__item'>
                         <Img src='/gaming-pc/components-svg/cpu.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Процессор:</span>
-                            <span className='components-list__item-info-name'>{cpu}</span>    
+                            <span className='components-list__item-info-name'>{cpu.name}</span>    
                         </div>
                     </li>
                     <li className={isNotebook ? 'components-list__item' : 'display-none'}>
                         <Img src='/gaming-pc/components-svg/display.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Дисплей:</span>
-                            <span className='components-list__item-info-name'>{display}</span>    
+                            <span className='components-list__item-info-name'>{display?.name}</span>    
                         </div>
                     </li>
                     <li className={isNotebook ? 'display-none' : 'components-list__item'}>
                         <Img src='/gaming-pc/components-svg/mb.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Материнская плата:</span>
-                            <span className='components-list__item-info-name'>{mb}</span>        
+                            <span className='components-list__item-info-name'>{mb.name}</span>        
                         </div>
                     </li>
                     <li className={isNotebook ? 'display-none' : 'components-list__item'}>
                         <Img src='/gaming-pc/components-svg/cpu-fan.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Охлаждение:</span>
-                            <span className='components-list__item-info-name'>{cpu_fan}</span>          
+                            <span className='components-list__item-info-name'>{cpu_fan.name}</span>          
                         </div>
                     </li>
                     <li className='components-list__item'>
                         <Img src='/gaming-pc/components-svg/ram.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Оперативная память:</span>
-                            <span className='components-list__item-info-name'>{ram}</span>    
+                            <span className='components-list__item-info-name'>{ram.name}</span>    
                         </div>
                     </li>
                     <li className='components-list__item'>
                         <Img src='/gaming-pc/components-svg/ssd.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>SSD накопитель:</span>
-                            <span className='components-list__item-info-name'>{ssd}</span>    
+                            <span className='components-list__item-info-name'>{ssd.name}</span>    
                         </div>
                     </li>
                     <li className={isNotebook ? 'display-none' : 'components-list__item'}>
                         <Img src='/gaming-pc/components-svg/pow-sup.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Блок питания:</span>
-                            <span className='components-list__item-info-name'>{pow_sup}</span>     
+                            <span className='components-list__item-info-name'>{pow_sup.name}</span>     
                         </div>
                     </li>
                     <li className={isNotebook ? 'display-none' : 'components-list__item'}>
                         <Img src='/gaming-pc/components-svg/case.svg'/>
                         <div className='components-list__item-info'>
                             <span className='components-list__item-info-title'>Корпус:</span>
-                            <span className='components-list__item-info-name'>{_case}</span>         
+                            <span className='components-list__item-info-name'>{_case.name}</span>         
                         </div>
                     </li>
                     <li className='components-list__item'>

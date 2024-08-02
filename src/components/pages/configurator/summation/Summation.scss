@@ -150,7 +150,12 @@
      padding-inline: 100px;
 
      &__header{
-          
+
+          &:not(:first-child){
+               th{
+                    padding-top: 35px;
+               }
+          }
 
           &-text{
                padding: 16px 12px;

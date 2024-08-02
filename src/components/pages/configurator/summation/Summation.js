@@ -1,9 +1,9 @@
 import ConfigBuyBtn from '@/components/buttons/configurator-buy-btn/ConfigBuyBtn'
 import { ConfigProvider, Modal } from 'antd';
 import configuratorHook from '../configuratorHook'
-import Link from 'next/link'
 import { useState } from 'react';
 import './Summation.scss'
+import { v4 as uuidv4 } from 'uuid';
 
 const bg_color = '#111'
 const modalStyles = {
@@ -14,13 +14,12 @@ const modalStyles = {
           color: 'white',
           backgroundColor: bg_color,
      },
-   };
+};
 
 const Summation = ({product}) => {
-
      const [isModalOpen, setIsModalOpen] = useState([false, false]);
 
-     const {selectIcon} = configuratorHook()
+     const {selectIcon, countFinalPrice} = configuratorHook()
 
      const toggleModal = (idx, target) => {
        setIsModalOpen((p) => {
@@ -29,37 +28,13 @@ const Summation = ({product}) => {
        });
      };
 
-     const countFinalPrice = () =>{
-          let price = 0;
-
-          for (const key in product) {
-
-               const item = product[key];
-
-               if(item != null && item?.length != 0){
-                    
-                    if(item?.length > 0){
-                         item.forEach(element => {
-                              let quantity = element?.quantity ?? 1
-                              price += Number(element?.price) * quantity
-                         });
-                    }
-                    else{
-                         price += Number(item?.price)
-                    }
-               }
-               
-          }
-          return price
-     }
-
      const makeProductArray = () => {
           let productArray = []
           for (const key in product) {
                const item = product[key];
 
                if(item != null && item?.length != 0){
-                    item.title = key
+                    // item.title = key
                     productArray.push(item)
                }
      
@@ -67,21 +42,84 @@ const Summation = ({product}) => {
           return productArray
      }
 
+     const makeCartItemfromProduct = () => {
+          const productsArray = []
+          const pc = {}
+          // Object.defineProperty(pc, 'price', {value: countFinalPrice(product)} , {enumerable: false})
+          // Object.defineProperty(pc, 'isPc', {value: true} , {enumerable: false})
+          pc.name = 'Конфигурация'
+          pc.id = uuidv4();
+          pc.price = countFinalPrice(product)
+          pc.isPc = true
+          pc.isConfiguration = true
+
+          if(product?.case !== null) {
+               pc.img = product.case?.img
+          } 
+          else pc.img = '/components/case/no-case.jpg'
+
+          for(let key in product){
+               
+               if(product[key] && product[key]?.length != 0){
+                    
+                    if(product[key]?.category === "Комплектующие" && !Array.isArray(product[key]) 
+                         || (Array.isArray(product[key]) && product[key].length != 0 && product[key]?.category === "Комплектующие") ){
+                              pc[key] = {...product[key]}
+                    }
+                    else{
+
+                         if(Array.isArray(product[key])){
+                              product[key].forEach(element => {
+                                   productsArray.push(
+                                        {
+                                             ...element,
+                                             category:product[key].category,
+                                             title:product[key].title
+                                        }
+                                   )
+                              })
+                         }
+                         else{
+                              productsArray.push(
+                                   {...product[key]}
+                              )
+                         }
+                    }
+               }
+          }
+          productsArray.push(pc)
+          return productsArray
+     }
+     console.log(makeCartItemfromProduct())
+     
+     const getCategories = () =>{
+          let titles = []
+          for (const key in product) {
+               const item = product[key];
+               if(item != null && item?.length != 0 && !titles.includes(item.category)){
+                    titles.push(item.category)
+               }
+          }
+          return titles
+     }
+
      return(
           <>
           <h1 className='summation__title'>Конфигуратор<br/> AMAZING PC UNLIMITED</h1>
                <img
                     className='summation__img'
-                    src={product['Корпус']?.img || '/components/case/no-case.jpg'}
+                    src={product.case?.img || '/components/case/no-case.jpg'}
                     // width={305}
                     height={170}
                     alt=''
                     loading='lazy'
                />
                <div className='summation__price'>
-                    Цена {countFinalPrice()} BYN
+                    Цена {countFinalPrice(product)} BYN
                </div>
-               <ConfigBuyBtn/>
+
+               <ConfigBuyBtn product={makeCartItemfromProduct()}/>
+
                <div className='summation__control-btns'>
                     <button className='summation__control-btns-save summation__control-btns--btn' >
                          <img
@@ -136,9 +174,9 @@ const Summation = ({product}) => {
                               const name = item.title
                               const info = item?.length > 0 ? item.map(item => <>{item.name} ({item?.quantity || 1} шт.)<br/></>) : item.name
                               return(
-                              <li key={index} className='configuration-list__item'>
+                              <li key={name} className='configuration-list__item'>
                                    <span className='configuration-list__item-name'>{name}</span>
-                                   <span className='configuration-list__item-info'>{info}</span>
+                                   <span key={index} className='configuration-list__item-info'>{info}</span>
                               </li>
                               )
                          })}
@@ -156,7 +194,7 @@ const Summation = ({product}) => {
                          }}
                     >
                          <Modal
-                              centered
+                              // centered
                               open={isModalOpen[1]}
                               onOk={() => toggleModal(1, false)}
                               onCancel={() => toggleModal(1, false)}
@@ -165,38 +203,44 @@ const Summation = ({product}) => {
                          >
                               <table className='modal-table'>
                               <tbody>
-                                   <tr className='modal-table__header'>
-                                        <th className='modal-table__header-text' colSpan={3}>Комплектующие</th>
-                                   </tr>
-                                   
-                                   {makeProductArray().map((item, index) => {
-                                        const name = item.title
-                                        const info = item?.length > 0 ? item.map(item => <>{item.name} ({item?.quantity || 1} шт.)<br/></>) : item.name
-                                        const price = item?.length > 0 ? item.map(item => <>{item.price*(item?.quantity || 1)} BYN<br/></>) : item.price + ' BYN'
+                                   {getCategories().map((item) => {
+                                        const _category = item
                                         return(
                                              <>
-                                             {/* <tr className='modal-table__header'>
-                                                  <th className='modal-table__header-text' colSpan={3}>Комплектующие</th>
-                                             </tr> */}
-                                             <tr key={index} className='modal-table__row'>
-                                                  <td className='modal-table__row-name'>
-                                                       <img
-                                                            className='modal-table__row-name-icon'
-                                                            src={selectIcon(name)}
-                                                            width={20}
-                                                            height={20}
-                                                            alt=''
-                                                            loading='lazy'
-                                                       /> 
-                                                       <span className='modal-table__row-name-text'>{name}</span>
-                                                  </td>
-                                                  <td className='modal-table__row-info'>{info}</td>
-                                                  <td className='modal-table__row-price'>{price}</td>
+
+                                             <tr key={item} className='modal-table__header'>
+                                                  <th className='modal-table__header-text' colSpan={3}>{item}</th>
                                              </tr>
+
+                                             {makeProductArray().map((item, index) => {
+                                                  if(item.category === _category){
+                                                       const name = item.title
+                                                       const info = item?.length > 0 ? item.map(item => <>{item.name} ({item?.quantity || 1} шт.)<br/></>) : item.name
+                                                       const price = item?.length > 0 ? item.map(item => <>{item.price*(item?.quantity || 1)} BYN<br/></>) : item.price + ' BYN'
+                                                       return(
+                                                       <>
+                                                            <tr key={index} className='modal-table__row'>
+                                                                 <td className='modal-table__row-name'>
+                                                                      <img
+                                                                           className='modal-table__row-name-icon'
+                                                                           src={selectIcon(name)}
+                                                                           width={20}
+                                                                           height={20}
+                                                                           alt=''
+                                                                           loading='lazy'
+                                                                      /> 
+                                                                      <span className='modal-table__row-name-text'>{name}</span>
+                                                                 </td>
+                                                                 <td className='modal-table__row-info'>{info}</td>
+                                                                 <td className='modal-table__row-price'>{price}</td>
+                                                            </tr>
+                                                       </>
+                                                       )     
+                                                  }
+                                             })}
                                              </>
                                         )
                                    })}
-                         
                               </tbody>
                               </table>
                          </Modal>
