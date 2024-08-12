@@ -50,7 +50,7 @@ const CartWindow = ({isCartWindowOpen, setIsCartWindowOpen}) => {
                <div className='_cart-window__inner'>
                     <ul className='cart-list'>
                          {cartItems.length > 0 ? cartItems.map((item,i) => (
-                              <Link key={i} href={'#'} className='cart-list__item'>
+                              <Link key={i} href='/cart' className='cart-list__item'>
                                    <img
                                         className='cart-list__item-img' 
                                         src={item.img}

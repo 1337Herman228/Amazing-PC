@@ -1,26 +1,20 @@
 import ConfigBuyBtn from '@/components/buttons/configurator-buy-btn/ConfigBuyBtn'
-import { ConfigProvider, Modal } from 'antd';
-import configuratorHook from '../configuratorHook'
+import configuratorHook from '../../../../lib/hooks/configuratorHook'
+import useSpecificationModal from '../../../../lib/hooks/useSpecificationModal'
 import { useState } from 'react';
 import './Summation.scss'
 import { v4 as uuidv4 } from 'uuid';
+import PcSpecModal from '../../../modals/pc-spec-modal/PcSpecModal'
 
-const bg_color = '#111'
-const modalStyles = {
-     mask: {
-          backdropFilter: 'blur(0px)',
-     },
-     content: {
-          color: 'white',
-          backgroundColor: bg_color,
-     },
-};
+
 
 const Summation = ({product}) => {
+    
+     const {countFinalPrice} = configuratorHook()
+     const {makeProductArray} = useSpecificationModal()
+
+
      const [isModalOpen, setIsModalOpen] = useState([false, false]);
-
-     const {selectIcon, countFinalPrice} = configuratorHook()
-
      const toggleModal = (idx, target) => {
        setIsModalOpen((p) => {
          p[idx] = target;
@@ -28,19 +22,7 @@ const Summation = ({product}) => {
        });
      };
 
-     const makeProductArray = () => {
-          let productArray = []
-          for (const key in product) {
-               const item = product[key];
-
-               if(item != null && item?.length != 0){
-                    // item.title = key
-                    productArray.push(item)
-               }
-     
-          }
-          return productArray
-     }
+     console.log('product',product)
 
      const makeCartItemfromProduct = () => {
           const productsArray = []
@@ -62,14 +44,20 @@ const Summation = ({product}) => {
                
                if(product[key] && product[key]?.length != 0){
                     
-                    if(product[key]?.category === "Комплектующие" && !Array.isArray(product[key]) 
-                         || (Array.isArray(product[key]) && product[key].length != 0 && product[key]?.category === "Комплектующие") ){
-                              pc[key] = {...product[key]}
+                    if(product[key]?.category === "Комплектующие" && !Array.isArray(product[key])){
+                         pc[key] = {...product[key]}
+                    }
+                    else if((Array.isArray(product[key]) && product[key].length != 0 && product[key]?.category === "Комплектующие")){
+                         pc[key] = [...product[key]]
+                         pc[key].category = product[key].category
+                         pc[key].title = product[key].title
                     }
                     else{
 
                          if(Array.isArray(product[key])){
+
                               product[key].forEach(element => {
+                                   // console.log('el', element)
                                    productsArray.push(
                                         {
                                              ...element,
@@ -78,6 +66,7 @@ const Summation = ({product}) => {
                                         }
                                    )
                               })
+
                          }
                          else{
                               productsArray.push(
@@ -91,17 +80,6 @@ const Summation = ({product}) => {
           return productsArray
      }
      console.log(makeCartItemfromProduct())
-     
-     const getCategories = () =>{
-          let titles = []
-          for (const key in product) {
-               const item = product[key];
-               if(item != null && item?.length != 0 && !titles.includes(item.category)){
-                    titles.push(item.category)
-               }
-          }
-          return titles
-     }
 
      return(
           <>
@@ -170,7 +148,7 @@ const Summation = ({product}) => {
                     <span className='summation__configuration-title'>Конфигурация</span>
 
                     <ul className='configuration-list'>
-                         {makeProductArray().map((item, index) => {
+                         {makeProductArray(product).map((item, index) => {
                               const name = item.title
                               const info = item?.length > 0 ? item.map(item => <>{item.name} ({item?.quantity || 1} шт.)<br/></>) : item.name
                               return(
@@ -181,70 +159,9 @@ const Summation = ({product}) => {
                               )
                          })}
                     </ul>
+
                     <button onClick={() => toggleModal(1, true)} className='summation__configuration-all-spec'>Полная спецификация</button>
-                    <ConfigProvider
-                         theme={{
-                              token: {
-                                   colorIcon: 'white',
-                                   colorIconHover: '#c0ff01',
-                              },
-                         }}
-                         modal={{
-                              styles: modalStyles,
-                         }}
-                    >
-                         <Modal
-                              // centered
-                              open={isModalOpen[1]}
-                              onOk={() => toggleModal(1, false)}
-                              onCancel={() => toggleModal(1, false)}
-                              footer={null}
-                              width={1200}
-                         >
-                              <table className='modal-table'>
-                              <tbody>
-                                   {getCategories().map((item) => {
-                                        const _category = item
-                                        return(
-                                             <>
-
-                                             <tr key={item} className='modal-table__header'>
-                                                  <th className='modal-table__header-text' colSpan={3}>{item}</th>
-                                             </tr>
-
-                                             {makeProductArray().map((item, index) => {
-                                                  if(item.category === _category){
-                                                       const name = item.title
-                                                       const info = item?.length > 0 ? item.map(item => <>{item.name} ({item?.quantity || 1} шт.)<br/></>) : item.name
-                                                       const price = item?.length > 0 ? item.map(item => <>{item.price*(item?.quantity || 1)} BYN<br/></>) : item.price + ' BYN'
-                                                       return(
-                                                       <>
-                                                            <tr key={index} className='modal-table__row'>
-                                                                 <td className='modal-table__row-name'>
-                                                                      <img
-                                                                           className='modal-table__row-name-icon'
-                                                                           src={selectIcon(name)}
-                                                                           width={20}
-                                                                           height={20}
-                                                                           alt=''
-                                                                           loading='lazy'
-                                                                      /> 
-                                                                      <span className='modal-table__row-name-text'>{name}</span>
-                                                                 </td>
-                                                                 <td className='modal-table__row-info'>{info}</td>
-                                                                 <td className='modal-table__row-price'>{price}</td>
-                                                            </tr>
-                                                       </>
-                                                       )     
-                                                  }
-                                             })}
-                                             </>
-                                        )
-                                   })}
-                              </tbody>
-                              </table>
-                         </Modal>
-                    </ConfigProvider>
+                    <PcSpecModal product={product} isModalOpen={isModalOpen} toggleModal={toggleModal}/>
                </div>
           </>
      )

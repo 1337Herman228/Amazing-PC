@@ -15,6 +15,17 @@ const CartPage = () => {
           setCartProducts(cartItems.items)
      },[cartItems])
 
+     useEffect(() => {
+          changeBodyColor()
+          return () => removeBodyColor()
+     }, []);
+     const changeBodyColor = () => {
+          document.querySelector('body').style.backgroundColor = "#111111"
+     }
+     const removeBodyColor = () => {
+          document.querySelector('body').style.backgroundColor = "#191a1b"
+     }
+
      // console.log(cartProducts)
      // console.log('Рендер CartPage')
 
@@ -24,12 +35,12 @@ const CartPage = () => {
                {cartProducts.length === 0 ? <div className='cart-is-empty'>Ваша корзина пуста</div> 
                : 
                <table className='cart__products-table'>
-                    <thead className='cart__products-table-header'>
+                    <thead className='cart__products-table-header hidden-tablet'>
                          <tr className='table-row-header'>
                               <th className='table-row-header__cell text-align-left' colSpan='2' >Товар</th>
-                              <th className='table-row-header__cell text-align-left'>Наличие</th>
-                              <th className='table-row-header__cell text-align-left'>Количество</th>
-                              <th className='table-row-header__cell text-align-left'>Цена</th>
+                              <th className='table-row-header__cell text-align-center'>Наличие</th>
+                              <th className='table-row-header__cell text-align-center'>Количество</th>
+                              <th className='table-row-header__cell text-align-center'>Цена</th>
                               <th className='table-row-header__cell'></th>
                          </tr>
                     </thead>

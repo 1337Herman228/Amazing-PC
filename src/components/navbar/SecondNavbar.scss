@@ -43,7 +43,7 @@
                          color: var(--tm-color-white);
                          &::after{
                              width:100%;
-                             color: var(--tm-color-lime)
+                             color: var(--main-color)
                          }
                     }
  
@@ -55,7 +55,7 @@
                          translate:-50%;
                          width: 0;   
                          height: 0.5px;
-                         background-color: var(--tm-color-lime);
+                         background-color: var(--main-color);
                          transition-duration: inherit;
                     }
           
@@ -118,6 +118,6 @@
      }
 
      &__item.active{
-          color: var(--tm-color-lime);
+          color: var(--main-color);
      }
 }

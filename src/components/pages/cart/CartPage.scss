@@ -1,8 +1,8 @@
 @import '../../../styles/style.scss';
 
-body{
-     background-color: var(--tm-color-dark-black-2) !important;     
-}
+// body{
+//      background-color: var(--tm-color-dark-black-2) !important;     
+// }
 
 .cart{
 
@@ -11,7 +11,7 @@ body{
           font-size: 16px;
           max-width: 1200px;
           margin: 0 auto;
-          background-color: var(--tm-color-lime);
+          background-color: var(--main-color);
           color: black;
           padding: 15px 15px;
 
@@ -27,6 +27,11 @@ body{
      &__products-table{
           max-width: 1200px;
           margin: 0 auto;
+
+          @include tablet{
+               width: 100%;
+               margin: 0;
+          }
 
           &-header{
                background-color: var(--cart-table-header-color);
@@ -56,19 +61,91 @@ body{
 
                &__main-image{
                     object-fit: contain;
+                    min-width: 320px;
                }
 
                &__cell{
                     padding: 16px;
                     font-weight: 300;
 
+                    .grid-cell{
+
+                         display: grid;
+                         gap:5px;
+                         grid-template-areas: 
+                         "main-image info info info del-btn"
+                         "main-image quantity available price del-btn";
+                         grid-template-columns: auto auto auto auto 60px;
+                         // grid-template-rows: auto 30px;
+
+                         @include mobile{
+                              grid-template-areas: 
+                              "main-image info del-btn"
+                              "main-image quantity  del-btn"
+                              "main-image available del-btn"
+                              "main-image price del-btn";
+                              grid-template-columns: 300px auto 20px;
+                         }
+
+                         &__main-image {
+                              grid-area: main-image;
+
+                              img{
+                                   object-fit: contain;
+                                   width: 320px;
+                                   height: 200px;
+                              }
+                         }
+
+                         &__info{
+                              grid-area: info;
+                              align-self: center;
+                         }
+
+                         &__del-btn{
+                              grid-area: del-btn;
+                              justify-self: end;
+                         }
+
+                         &__quantity{
+                              grid-area: quantity;
+                         }
+
+                         &__available{
+                              font-size: 17px;
+                              color: var(--text-color-grey-light);
+                              grid-area: available;
+                              padding-top: 7px;
+                              @include mobile{
+                                   padding-top:0px;
+                              }
+                         }
+
+                         &__price{
+                              font-size: 16px;
+                              grid-area: price;
+                              padding-top: 7px;
+                              @include mobile{
+                                   padding-top: 0px;
+                              }
+                         }
+                    }
+                    
+
+                    &.price{
+                         font-size: 16px;
+                         text-align: center;
+                    }
+
+                    &.quantity{
+                         margin: 0 auto;
+                    }
+
                     &.available{
                          min-width: 150px;
-
-                         &__text{
-                              font-size: 16px;
-                              color: var(--text-color-grey-light);
-                         }
+                         text-align: center;
+                         font-size: 16px;
+                         color: var(--text-color-grey-light);
                     }
 
                     .title-div{
@@ -79,8 +156,8 @@ body{
 
                          &--pc-name{
                               font-size: 20px;
-                              text-transform: uppercase;
-                              font-weight: 400;
+                              // text-transform: uppercase;
+                              // font-weight: 400;
                          }
                          &--pc-id{
                               font-size: 15px;
@@ -99,16 +176,45 @@ body{
                          justify-content: center;
                          flex-direction: column;
                          gap: 10px;
-                         min-width: 370px;
+                         // min-width: 370px;
 
                          &__title{
                               
                          }
                     }
+                    .pc-dashboard{
+                         display: flex;
+                         gap: 5px;
+                         flex-direction: row;
+
+                         @media (max-width: 1150px) {
+                              display: block;
+                         }
+
+                         @include tablet{
+                              display: flex;
+                         }
+                        
+                         &__btn{
+                              font-size: 13px;
+                              padding-block: 9px;
+                              padding-inline: 18px;
+
+                              @media (max-width: 1150px) {
+                                  margin-bottom: 10px;
+                              }
+
+                              @include tablet{
+                                   margin-bottom: 0px;
+                              }
+                         }
+
+                    }
 
                     .btn-delete{
                          @include reset-button;
                          cursor: pointer;
+                         min-width: 20px;
 
                          @include hover{
                               
@@ -127,6 +233,7 @@ body{
                          border-radius: 2px;
                          border: 1px solid #313131;
                          background: #222;
+                         max-width: 92px;
 
                          &__btn-change-count{
                               @include reset-button;
@@ -136,7 +243,7 @@ body{
 
                               @include hover{
                                    svg{
-                                        fill: var(--tm-color-lime);
+                                        fill: var(--main-color);
                                    }
                               }
 
@@ -167,7 +274,7 @@ body{
 
                               &:focus {
                                    outline: none;
-                                   border: 1px solid var(--tm-color-lime);
+                                   border: 1px solid var(--main-color);
                               }
 
                               &[type=number] {

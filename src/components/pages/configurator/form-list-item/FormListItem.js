@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from 'react'
 import './FormListItem.scss'
-import configuratorHook from '../configuratorHook'
+import configuratorHook from '../../../../lib/hooks/configuratorHook'
 
 const FormListItem = (
      {

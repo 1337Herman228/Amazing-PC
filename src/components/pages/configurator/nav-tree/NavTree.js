@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import './NavTree.scss'
-import configuratorHook from '../configuratorHook'
+import configuratorHook from '../../../../lib/hooks/configuratorHook'
 import { useEffect } from 'react'
 
 const NavTree = ({uniqueCategories, allItems}) => {

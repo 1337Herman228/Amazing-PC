@@ -14,11 +14,11 @@ const _catalog = ({categories, products_list, is_notebook = false}) =>{
                          <div className={categories.length > 1 ? '_catalog-body__header' : 'display-none'}>
                               <div className='header-top'>
                                    <h2 className='header-top__title'>
-                                        <Link href={category.category_link}>
+                                        <div>
                                              {category.category_name}
-                                        </Link>
+                                        </div>
                                    </h2>
-                                   <Link href={category.category_link}>
+                                   <div>
                                         <img
                                              className='header-top__arrow'
                                              src='/arrow-top-right.svg'
@@ -27,7 +27,7 @@ const _catalog = ({categories, products_list, is_notebook = false}) =>{
                                              alt=''
                                              loading='lazy'
                                         />
-                                   </Link>
+                                   </div>
                               </div>
                               <div className='header-bottom'>
                                    <p>{category.category_description}</p>

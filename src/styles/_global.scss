@@ -2,11 +2,11 @@
     --text-main-color: var(--tm-color-white);
     --background-main-color: var(--tm-color-light-black);
 
-    scrollbar-color: var(--tm-color-lime) transparent;
+    scrollbar-color: var(--main-color) transparent;
 }
 
 ::selection {
-    background-color: var(--tm-color-lime); /* Цвет фона выделения */
+    background-color: var(--main-color); /* Цвет фона выделения */
     color: var(--configurator-contol-btn-bg-color); /* Цвет текста выделения */
   }
 
@@ -81,14 +81,14 @@ hr{
     color:black;
     transition-duration: var(--transition-duration);
 
-    background-color: var(--tm-color-lime);
+    background-color: var(--main-color);
     border-radius: var(--border-radius);
 
     font-size: var(--linkFontSize);
 
     &:hover{
          color: black;
-         background-color: var(--tm-color-light-lime);
+         background-color: var(--main-color-accent);
     }
 
     @include tablet{
@@ -139,8 +139,8 @@ hr{
     text-transform: uppercase;
     // font-size: 14px;
     font-weight: 300;
-    color:var(--tm-color-lime);
-    border: 1px solid var(--tm-color-lime);
+    color:var(--main-color);
+    border: 1px solid var(--main-color);
     border-radius: var(--border-radius-section);
     // padding: 18px 40px;
 
@@ -153,11 +153,11 @@ hr{
     @include flex-center;
 
     color: black;
-    background-color: var(--tm-color-lime);
+    background-color: var(--main-color);
     border: none;
 
     @include hover{
-        background-color: var(--tm-color-soft-lime);
+        background-color: var(--main-color-accent);
     }
 }
 
@@ -166,12 +166,12 @@ hr{
     @include square(55px);
 
     color: black;
-    background-color: var(--tm-color-lime);
+    background-color: var(--main-color);
     border: none;
     border-radius: var(--border-radius-circle);
 
     @include hover{
-        background-color: var(--tm-color-soft-lime);
+        background-color: var(--main-color-accent);
     }
 }
 
@@ -179,13 +179,13 @@ hr{
     @include flex-center;
     @include square(56px);
 
-    color: var(--tm-color-lime);
+    color: var(--main-color);
     background-color: transparent;
-    border: 2px solid var(--tm-color-lime);
+    border: 2px solid var(--main-color);
     border-radius: var(--border-radius-circle);
 
     @include hover{
-        background-color: var(--tm-color-lime);
+        background-color: var(--main-color);
         color: black;
     }
 
@@ -265,7 +265,7 @@ hr{
 
 .mark-gray-green{
     background-color: var(--tm-color-dark-grey-2);
-    color: var(--tm-color-lime);
+    color: var(--main-color);
     border-radius: var(--border-radius-section);
     font-size: 16px;
     font-weight: 300;

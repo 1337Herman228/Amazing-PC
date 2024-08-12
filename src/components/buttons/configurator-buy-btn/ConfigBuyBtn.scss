@@ -1,7 +1,7 @@
 @import '../../../styles/style.scss';
 
 ._buy-button{
-     background-color: var(--tm-color-lime);
+     background-color: var(--main-color);
      border:none;
      color:black;
      padding: 8px 15px;
@@ -29,7 +29,7 @@
      }
  
      @include hover{
-          background-color: var(--tm-color-light-lime);
+          background-color: var(--main-color-accent);
      }
  
      &:hover::before{

@@ -77,7 +77,7 @@
                               color: white;
                               &::after{
                                    width:100%;
-                                   color: var(--tm-color-lime)
+                                   color: var(--main-color)
                               }
                          }
      
@@ -89,7 +89,7 @@
                               translate:-50%;
                               width: 0;   
                               height: 0.5px;
-                              background-color: var(--tm-color-lime);
+                              background-color: var(--main-color);
                               transition-duration: inherit;
                          }
                     }
@@ -97,7 +97,7 @@
                          color: white;
                          &::after{
                               width:100%;
-                              color: var(--tm-color-lime)
+                              color: var(--main-color)
                          }
                     }
                }
@@ -345,7 +345,7 @@ input[type="radio"] {
  }
  
  input[type="radio"]:checked + label::before {
-     border: 6px solid var(--tm-color-lime);
+     border: 6px solid var(--main-color);
      // background-color: var(--tm-color-lime); /* цвет заполнения при выборе */
  }
 
@@ -367,8 +367,8 @@ input[type="radio"] {
      border: 1px solid #444;
  }
  input[type="checkbox"]:checked+ label::before{
-     background-color: var(--tm-color-lime);
-     border: 1px solid var(--tm-color-lime);
+     background-color: var(--main-color);
+     border: 1px solid var(--main-color);
  }
 
  input[type="checkbox"] + label::after {

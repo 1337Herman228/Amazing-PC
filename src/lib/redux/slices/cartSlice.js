@@ -46,88 +46,68 @@ const initialState = {
           "quantity": 1
       },
       {
-          "name": "Конфигурация",
-          "id": "2f204fa1-caa6-492d-a0b4-3727f624df4b",
-          "price": 7980,
-          "isPc": true,
-          "isConfiguration": true,
-          "img": "/components/case/deepcool-cc360-argb-314x177.jpg",
-          "gpu": {
-              "id": 11,
-              "partition": "RTX 4060",
-              "name": "Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA]",
-              "price": "3000",
-              "img": "/components/gpu/palit-rtx-4060-ti-dual.png",
-              "category": "Комплектующие",
-              "title": "Видеокарта"
-          },
-          "cpu": {
-              "id": 11,
-              "partition": "Intel Core 12th",
-              "name": "Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]",
-              "price": "1500",
-              "img": "/components/cpu/intel-core-i5-12th.jpg",
-              "category": "Комплектующие",
-              "title": "Процессор"
-          },
-          "motherboard": {
-              "id": 11,
-              "partition": "Intel B760",
-              "name": "MSI PRO B760M-A [DDR4, Wi-Fi]",
-              "price": "400",
-              "img": "/components/mb/msi-pro-b760m-awifi-314x177.jpg",
-              "category": "Комплектующие",
-              "title": "Материнская плата"
-          },
-          "cpu_fan": {
-              "id": 11,
-              "partition": "Asus",
-              "name": "ASUS ROG RYUO III 360 White",
-              "price": "450",
-              "img": "/components/cpu-fan/asus-rog-ryuo-iii-360-argb-white-314x177.jpg",
-              "category": "Комплектующие",
-              "title": "Охлаждение"
-          },
-          "ram": {
-              "id": 11,
-              "partition": "16 ГБ",
-              "name": "16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]",
-              "price": "220",
-              "img": "/components/ram/kingston-fury-beast-ddr4-rgb-2x-314x177.jpg",
-              "category": "Комплектующие",
-              "title": "Оперативная память"
-          },
-          "ssd": {
-              "0": {
-                  "id": 11,
-                  "partition": "500 ГБ",
-                  "name": "500GB ADATA LEGEND 800 [3500MB/s, Gen4]",
-                  "price": "300",
-                  "img": "/components/ssd/adata-legend-800-314x177.jpg"
-              },
-              "category": "Комплектующие",
-              "title": "SSD накопитель"
-          },
-          "power_supply": {
-              "id": 11,
-              "partition": "От 500W",
-              "name": "550W DeepCool PK550D [80+ Bronze]",
-              "price": "160",
-              "img": "/components/pow-sup/deepcool-pk550d-314x177.jpg",
-              "category": "Комплектующие",
-              "title": "Блок питания"
-          },
-          "case": {
-              "id": 22,
-              "partition": "Deepcool",
-              "name": "DeepCool CC360 ARGB",
-              "price": "220",
-              "img": "/components/case/deepcool-cc360-argb-314x177.jpg",
-              "category": "Комплектующие",
-              "title": "Корпус"
-          },
-          "quantity": 5
-      }
+        "name": "Конфигурация",
+        "id": "6d8e5ce0-17b4-4266-a837-7e0d6bd13d4b",
+        "price": 8500,
+        "isPc": true,
+        "isConfiguration": true,
+        "img": "/components/case/no-case.jpg",
+        "gpu": {
+            "id": 11,
+            "partition": "RTX 4060",
+            "name": "Palit GeForce RTX 4060 Ti Dual [8GB, 4352 CUDA]",
+            "price": "3000",
+            "img": "/components/gpu/palit-rtx-4060-ti-dual.png",
+            "category": "Комплектующие",
+            "title": "Видеокарта"
+        },
+        "cpu": {
+            "id": 11,
+            "partition": "Intel Core 12th",
+            "name": "Intel® Core™ i5-12400F [до 4.4GHz, 6 ядер]",
+            "price": "1500",
+            "img": "/components/cpu/intel-core-i5-12th.jpg",
+            "category": "Комплектующие",
+            "title": "Процессор"
+        },
+        "motherboard": {
+            "id": 11,
+            "partition": "Intel B760",
+            "name": "MSI PRO B760M-A [DDR4, Wi-Fi]",
+            "price": "400",
+            "img": "/components/mb/msi-pro-b760m-awifi-314x177.jpg",
+            "category": "Комплектующие",
+            "title": "Материнская плата"
+        },
+        "cpu_fan": {
+            "id": 11,
+            "partition": "Asus",
+            "name": "ASUS ROG RYUO III 360 White",
+            "price": "450",
+            "img": "/components/cpu-fan/asus-rog-ryuo-iii-360-argb-white-314x177.jpg",
+            "category": "Комплектующие",
+            "title": "Охлаждение"
+        },
+        "ram": {
+            "id": 11,
+            "partition": "16 ГБ",
+            "name": "16GB Kingston FURY Beast RGB [DDR4, 3600MHz, 2x8GB]",
+            "price": "220",
+            "img": "/components/ram/kingston-fury-beast-ddr4-rgb-2x-314x177.jpg",
+            "category": "Комплектующие",
+            "title": "Оперативная память"
+        },
+        "power_supply": {
+            "id": 11,
+            "partition": "От 500W",
+            "name": "550W DeepCool PK550D [80+ Bronze]",
+            "price": "160",
+            "img": "/components/pow-sup/deepcool-pk550d-314x177.jpg",
+            "category": "Комплектующие",
+            "title": "Блок питания"
+        },
+        "quantity": 1
+    }
     ],
   
   // loading:false,

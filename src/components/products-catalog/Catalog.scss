@@ -1,58 +1,57 @@
-@import '../../styles/style.scss';
+@import "../../styles/style.scss";
 
-._catalog{
+._catalog {
      display: block;
 
-     &-body{
+     &-body {
           padding-top: 70px;
 
-          &__header{
+          &__header {
                background-color: var(--tm-color-dark-blue-black);
                padding: 40px;
                border-radius: var(--border-radius-section);
 
-               .header-top{
+               .header-top {
                     display: flex;
                     justify-content: space-between;
                     gap: 50px;
 
-                    &__title{
+                    &__title {
                          font-size: 42px;
                          font-weight: 400;
                          padding-bottom: 20px;
                          border-bottom: 1px solid white;
 
-                         @include tablet{
+                         @include tablet {
                               font-size: 35px;
                          }
 
-                         @include mobile{
+                         @include mobile {
                               font-size: 26px;
                          }
                     }
                }
 
-               .header-bottom{
+               .header-bottom {
                     padding-top: 20px;
                     font-size: 16px;
                     // font-weight: 300;
                     color: var(--tm-color-dark-white);
                     max-width: 1216px;
 
-                    @include tablet{
+                    @include tablet {
                          max-width: 700px;
                     }
 
-                    @include mobile{
+                    @include mobile {
                          max-width: 100%;
                     }
                }
           }
      }
 
-     ._catalog-body{
-          
-          &__main{
+     ._catalog-body {
+          &__main {
                padding-top: 50px;
                display: grid;
                grid-template-columns: 1fr 1fr 1fr;
@@ -60,26 +59,25 @@
                column-gap: 15px;
                row-gap: 50px;
 
-               @media (max-width: 1250px){
+               @media (max-width: 1250px) {
                     grid-template-columns: 1fr 1fr;
                }
 
-               @include mobile{
+               @include mobile {
                     grid-template-columns: 1fr;
                }
 
-               .pc-card-container{
-                    
-                    .pc-card{
+               .pc-card-container {
+                    .pc-card {
                          background-color: var(--tm-color-dark-black-2);
                          border-radius: var(--border-radius-section);
                          padding: 40px;
                          height: 100%;
-     
-                         &__mark-div{
+
+                         &__mark-div {
                               position: relative;
 
-                              .pc-card__mark{
+                              .pc-card__mark {
                                    position: absolute;
                                    padding-top: 25px;
                                    padding-left: 20px;
@@ -88,79 +86,78 @@
                                    font-weight: 300;
                                    color: black;
                                    background-color: var(--tm-color-green-lime);
-                                   border:none;
+                                   border: none;
                                    border-radius: var(--border-radius-section);
                                    padding: 7px 20px;
                               }
                          }
-     
-                         &__img{
+
+                         &__img {
                               object-fit: contain;
                               width: 100%;
                               height: 400px;
                          }
-     
-                         &__info{
+
+                         &__info {
                               padding-bottom: 5px;
-     
-                              &-title-and-price{
+
+                              &-title-and-price {
                                    display: flex;
                                    align-items: center;
                                    justify-content: space-between;
-     
-                                   .pc-card__info-title{
+
+                                   .pc-card__info-title {
                                         font-size: 30px;
                                         font-weight: 400;
                                         text-transform: uppercase;
                                    }
-     
-                                   .pc-card__info-price{
+
+                                   .pc-card__info-price {
                                         font-size: 18px;
                                         color: var(--tm-color-purpur);
                                         font-weight: 500;
                                    }
                               }
-     
-                              &-description{
+
+                              &-description {
                                    color: var(--tm-color-dark-white);
                                    font-size: 16px;
                                    font-weight: 300;
                               }
                          }
 
-                         &__configuration-list{
+                         &__configuration-list {
                               display: flex;
                               flex-direction: column;
                               padding-top: 10px;
                               padding-bottom: 20px;
                               gap: 20px;
 
-                              .component{
+                              .component {
                                    display: flex;
                                    align-items: center;
                                    gap: 10px;
 
-                                   &__img{
+                                   &__img {
                                         filter: invert(1);
                                    }
-                                   
-                                   &__name{
+
+                                   &__name {
                                         font-size: 16px;
                                         font-weight: 300;
                                    }
                               }
-
                          }
                     }
-     
-                    .card-buttons{
+
+                    .card-buttons {
                          display: flex;
                          justify-content: center;
                          align-items: center;
                          gap: 10px;
                          margin-top: -20px;
 
-                         &__link{
+                         &__link {
                               display: flex;
                               font-size: 13px;
                               align-items: center;
@@ -170,68 +167,66 @@
                               //      // filter: invert(1);
                               // }
 
-                              &__text{
+                              &__text {
                                    display: flex;
                                    align-items: center;
 
-                                   @media (max-width: 1400px){
+                                   @media (max-width: 1400px) {
                                         display: none;
                                    }
 
-                                   @media (max-width: 1250px){
+                                   @media (max-width: 1250px) {
                                         display: block;
                                    }
 
-                                   @media (max-width: 850px){
+                                   @media (max-width: 850px) {
                                         display: none;
                                    }
 
-                                   @include mobile{
+                                   @include mobile {
                                         display: block;
                                    }
 
-                                   @media (max-width: 460px){
+                                   @media (max-width: 460px) {
                                         display: none;
                                    }
                               }
-
                          }
 
-                         &__link--more-info{
+                         &__link--more-info {
                               padding: 10px clamp(15px, 1.5vw, 25px);
                               max-height: 38px;
                               background-color: var(--tm-color-dark-black-2);
 
-                              @include hover{
+                              @include hover {
                                    background-color: white;
                               }
                          }
 
-                         &__link--more-info-notebook{
+                         &__link--more-info-notebook {
                               padding: 15px 100px;
                               max-height: 38px;
                               background-color: var(--tm-color-dark-black-2);
 
-                              @include hover{
+                              @include hover {
                                    background-color: white;
                               }
 
-                              @include mobile{
+                              @include mobile {
                                    padding: 15px min(100px, 20vw);
                               }
                          }
 
-                         &__link--configurator{
+                         &__link--configurator {
                               text-transform: uppercase;
                               border-radius: var(--border-radius-section);
                               padding: 7px clamp(15px, 1.5vw, 25px);
 
-                              @media (max-width: 1400px){
+                              @media (max-width: 1400px) {
                                    max-height: 38px;
                                    padding: 8px;
                               }
                          }
-     
                     }
                }
           }

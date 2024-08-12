@@ -20,6 +20,11 @@ const components_list = [
           id: 1,
           name: 'Видеокарта',
           type: 'gpu',
+
+          // multiselect:false,
+          // default_checked:null,
+          // max_quantity:5,
+
           category:'Комплектующие',
           partition:[
                'RTX 4060',

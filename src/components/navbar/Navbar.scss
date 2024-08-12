@@ -51,7 +51,7 @@
             align-self: center;
             font-size: 23px;
             font-weight: 400;
-            color:var(--tm-color-lime);
+            color:var(--main-color);
             position:relative;
             display: inline-flex;
             align-items: center;
@@ -65,26 +65,10 @@
 
             @include hover{
 
-                color: orange;
+                color: var(--main-color-accent);
                 transition-duration: var(--transition-duration);
-
-                // &::after{
-                //     width:100%;
-                //     color: var(--tm-color-lime)
-                // }
             }
 
-            // &::after{
-            //     content:'';
-            //     position: absolute;
-            //     top:100%;
-            //     left:50%;
-            //     translate:-50%;
-            //     width: 0;   
-            //     height: 0.5px;
-            //     background-color: var(--tm-color-white);
-            //     transition-duration: 0.2s;
-            // }
         }
     
         &::after{
@@ -117,7 +101,7 @@
                     @include hover{
                         &::after{
                             width:100%;
-                            color: var(--tm-color-lime)
+                            color: var(--main-color)
                         }
                     }
 
@@ -129,7 +113,7 @@
                         translate:-50%;
                         width: 0;   
                         height: 0.5px;
-                        background-color: var(--tm-color-lime);
+                        background-color: var(--main-color);
                         transition-duration: inherit;
                     }
                 }
@@ -184,7 +168,7 @@
                             right:0;
                             padding: 1px 5px;
                             padding-top: 2px;
-                            background-color: var(--tm-color-lime);
+                            background-color: var(--main-color);
                             border-radius: var(--border-radius);
 
                             @include tablet{
@@ -312,7 +296,7 @@
             @include hover{
                 &::after{
                     width:100%;
-                    color: var(--tm-color-lime)
+                    color: var(--main-color)
                 }
             }
 
@@ -324,7 +308,7 @@
                 translate:-50%;
                 width: 0;   
                 height: 1px;
-                background-color: var(--tm-color-lime);
+                background-color: var(--main-color);
                 transition-duration: inherit;
             }
         }

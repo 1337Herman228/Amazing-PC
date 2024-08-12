@@ -210,7 +210,7 @@
           }
 
           &-arrow{
-               color: var(--tm-color-lime);
+               color: var(--main-color);
                justify-self: end;
                align-self: start;
 
@@ -291,7 +291,7 @@
      font-size: 12px;
      padding: 9px 20px;
      color:black;
-     background-color: var(--tm-color-lime);
+     background-color: var(--main-color);
      border-radius: var(--border-radius);
 }
 
@@ -427,7 +427,7 @@
                     line-height: 1.1;
 
                     @include hover{
-                         color: var(--tm-color-lime);
+                         color: var(--main-color);
                     }
                }
 
@@ -525,7 +525,7 @@
                          background: url(/arrow-top-right.svg) center/contain no-repeat;
                          width: 20px;
                          aspect-ratio: 1;
-                         color: var(--tm-color-lime);
+                         color: var(--main-color);
                          right: 0;
                          z-index: -100;
                     }
@@ -534,7 +534,7 @@
                          width: 100%;
 
                          @include hover{
-                              color: var(--tm-color-lime);
+                              color: var(--main-color);
                          }
                     }
                }
@@ -637,7 +637,7 @@
                                    }
 
                                    &__indicator{
-                                        color: var(--tm-color-lime);
+                                        color: var(--main-color);
                                    }
                               }
 
