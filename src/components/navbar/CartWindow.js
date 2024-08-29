@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import './CartWindow.scss'
-import { memo, useCallback, useEffect, useState } from 'react'
-import {  useSelector } from 'react-redux'
+import { useCallback, useEffect, useState } from 'react'
+import {useSelector} from 'react-redux'
 
 const CartWindow = ({isCartWindowOpen, setIsCartWindowOpen}) => {
 
@@ -69,7 +69,7 @@ const CartWindow = ({isCartWindowOpen, setIsCartWindowOpen}) => {
                     <Link onClick={() => setIsCartWindowOpen(false)} className='to-cart-link green-filled-link' href='/cart'>Перейти в корзину</Link>
                     <Link className='_cart-window__inner-link' href='#'>Мои конфигурации</Link>
                     <Link className='_cart-window__inner-link' href='#'>Мои заказы</Link>
-                    <Link className='_cart-window__inner-link' href='#'>Войти</Link>
+                    <Link className='_cart-window__inner-link' href='/sign-in'>Войти</Link>
                </div>
                
           </div>

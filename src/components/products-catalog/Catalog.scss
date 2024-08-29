@@ -68,6 +68,13 @@
                }
 
                .pc-card-container {
+                    transition-duration: 0.3s;
+                    border-radius: var(--border-radius-section);
+
+                    @include hover{
+                         transform: scale(1.02);
+                    }
+
                     .pc-card {
                          background-color: var(--tm-color-dark-black-2);
                          border-radius: var(--border-radius-section);

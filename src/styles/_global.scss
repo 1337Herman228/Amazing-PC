@@ -271,3 +271,45 @@ hr{
     font-weight: 300;
     padding: 13px 20px;
 }
+
+.main-color-submit-btn{
+    @include reset-button;
+    cursor: pointer;
+    background-color: var(--main-color);
+    border-radius: 2px;
+    height: 45px;
+    transition-duration: var(--transition-duration);
+
+    @include hover{
+        background-color: var(--main-color-accent);
+    }
+}
+
+.horizontal_centered{
+    display: flex;
+    justify-content: center;
+}
+
+.vertical_centered{
+    display: flex;
+    align-items: center;
+}
+
+.manage-btn{
+    @include reset-button;
+    @include flex-center;
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+    width: 30px;
+
+    .light-img{
+        filter: invert(0.9);
+    }
+
+    @include hover{
+        .hover-img{
+            transition-duration: var(--transition-duration);
+            filter: invert(0.4);
+        }
+    }
+}

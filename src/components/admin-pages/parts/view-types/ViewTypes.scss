@@ -1,0 +1,14 @@
+@import '../../../../styles/style.scss';
+
+.view-types{
+
+
+    &__table{
+        margin: 0 auto;
+        max-width: 1200px;
+
+        .btn-30-td{
+            width: 30px;
+        }
+    }
+}

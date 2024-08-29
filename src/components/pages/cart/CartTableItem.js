@@ -1,22 +1,10 @@
 import {  useEffect, useState } from 'react'
-// import './CartPage.scss'
+import './CartPage.scss'
 import {changeItemQuantity, deleteCartItem} from '../../../lib/redux/slices/cartSlice'
 import { useDispatch } from 'react-redux'
-import { ConfigProvider, Modal } from 'antd';
 import PcSpecModal from '@/components/modals/pc-spec-modal/PcSpecModal';
 import Link from 'next/link';
-
-const bg_color = '#111'
-const modalStyles = {
-     mask: {
-          backdropFilter: 'blur(4px)',
-     },
-     content: {
-          color: 'white',
-          backgroundColor: bg_color,
-          borderRadius: '5px',
-     },
-};
+import DeleteModal from '@/components/modals/delete-modal/DeleteModal';
 
 const CartTableItem = ({item}) => {
 
@@ -88,32 +76,6 @@ const CartTableItem = ({item}) => {
           </div>
      )
 
-     const DeleteModal = () => {
-          return(
-               <ConfigProvider
-                    modal={{
-                         styles: modalStyles,
-                    }}
-               >
-               <Modal
-                    open={open}
-                    closeIcon={false}
-                    width={550}
-                    footer={(_) => (
-                         <>
-                              <button className='delete-modal-btn mr main-color-transparent-rect-btn' onClick={handleCancel}>Отмена</button>
-                              <button className='delete-modal-btn main-color-filled-rect-btn' onClick={handleOk}>Да</button>
-                         </>
-                    )}
-                    >
-                         <div className='delete-modal-title'>
-                              <p>Удалить товар из корзины?</p>
-                         </div>
-               </Modal>
-               </ConfigProvider>
-          )
-     }
-
      const Quantity = () => {
           return(
                <div className='quantity'>
@@ -170,7 +132,7 @@ const CartTableItem = ({item}) => {
                               height={20}
                          />
                     </button>
-                   <DeleteModal />
+                   <DeleteModal open={open} handleCancel={handleCancel} handleOk={handleOk}/>
                </td>
           </tr>
 

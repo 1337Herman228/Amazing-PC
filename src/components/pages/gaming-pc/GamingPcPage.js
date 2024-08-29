@@ -3,7 +3,7 @@
 import Catalog from '../../products-catalog/Catalog';
 import Header from '../../header/catalog-header/Header';
 import { useEffect, useState } from 'react';
-import Loading from '@/components/loading/Loading';
+// import Loading from '@/components/loading/LoadingPage';
 
 const gaming_pc_header_info = {
      title:'Игровые компьютеры',

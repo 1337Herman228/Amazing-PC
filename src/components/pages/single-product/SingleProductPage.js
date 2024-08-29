@@ -1,7 +1,7 @@
 'use client';
 
 import SingleProductHeader from "@/components/header/single-product-header/SingleProductHeader"
-import Loading from "@/components/loading/Loading";
+import LoadingPage from "@/components/loading/LoadingPage";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from 'next/navigation'
 
@@ -347,7 +347,7 @@ const SingleProductPage = ({product_name}) => {
      return(
           <>
           { isLoading ? 
-               <Loading /> : 
+               <LoadingPage /> : 
                <>
                     <SecondNavbar productInfo={productInfo}/>
                     <SingleProductHeader header_info={headerInfo}/>

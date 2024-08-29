@@ -15,11 +15,12 @@
 .header__inner{
     display:grid;
     grid-template-columns: 180px auto auto;
-    font-size: 14px;
+    font-size: 16px;
+    // justify-content: center;
 
     @include tablet{
         grid-template-columns: 150px auto auto;
-        font-size: 10px;
+        font-size: 11px;
         padding-inline: 5px;
     }
 
@@ -79,29 +80,42 @@
     }
 
     .header__menu{
-        align-self: center;
 
         .header__menu-list{
             display: flex;
             align-items: center;
 
             .header__menu-item{
-                // margin-right: 25px;
 
                 .header__menu-link{
                     position:relative;
                     display: inline-flex;
                     align-items: center;
-                    padding: 10px 11px;
+                    justify-content: center;
+                    padding: 5px 11px;
 
                     @include tablet{
-                        padding: 9px;
+                        padding: 7px 5px 3px 5px;
+
+                        @include hover{
+                            &::after{
+                                width:85%;
+                                height: 1px;
+                                color: var(--main-color)
+                            }
+                        }
                     }
 
                     @include hover{
                         &::after{
-                            width:100%;
+                            width:85%;
                             color: var(--main-color)
+                        }
+
+                        @include tablet{
+                            &::after{
+                                width:90%;
+                            }
                         }
                     }
 
@@ -112,15 +126,25 @@
                         left:50%;
                         translate:-50%;
                         width: 0;   
-                        height: 0.5px;
+                        height: 2px;
                         background-color: var(--main-color);
                         transition-duration: inherit;
+
+                        @include tablet{
+                            height: 1px;
+                        }
                     }
                 }
 
                 .header__menu-link.current-link{
                     &::after{
-                        width:100%;
+                        width:85%;
+                    }
+
+                    @include tablet{
+                        &::after{
+                            width:90%;
+                        }
                     }
                 }
             }

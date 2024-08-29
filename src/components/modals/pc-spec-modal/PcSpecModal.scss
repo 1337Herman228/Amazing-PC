@@ -23,6 +23,17 @@
               text-align: start;
               border-bottom: 1px solid var(--main-color);
          }
+
+    }
+
+    &__row-names{
+          &-cell{
+               padding: 15px 10px;
+               font-size: 16px;
+               font-weight: 500;
+               text-align: start;
+               border-bottom: 1px solid var(--main-color);
+          }
     }
 
     &__row{

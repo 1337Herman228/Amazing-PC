@@ -1,14 +1,5 @@
-
-// export default function AuthLayout({ children }) {
-//     return(
-//         <div>
-//             {children}
-//         </div>
-//     )
-// }
-
-// import "../styles/style.scss";
-// import './layout.scss';
+import "../../styles/style.scss";
+import StoreProvider from "../StoreProvider";
 
 export const metadata = {
   title: "Amazing PC",
@@ -17,8 +8,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <div className="main-body">
-        {children}
-    </div>
+    <html lang="en">
+      <StoreProvider>
+        <body>
+          <main className="main-body">
+              {children}
+          </main>
+        </body>
+      </StoreProvider>
+    </html>
   );
 }
