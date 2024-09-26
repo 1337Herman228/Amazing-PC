@@ -1,14 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import './AddType.scss'
 import useHttp from '../../../../lib/hooks/http.hook';
-import {ConfigProvider, notification } from 'antd';
+import {notification } from 'antd';
 import { useForm } from 'react-hook-form';
 import AdminDashboard from '@/components/navbar/admin-dashboard/AdminDashboard';
 import AuthInput from '@/components/input/auth-input/AuthInput';
+import ImageUpload from '../../../upload-image/ImageUpload';
+import useManageImg from '@/lib/hooks/manageImg.hook';
+
 
 const AddType = () => {
+
+    const {saveSvgIcon} = useManageImg();
 
     const [api, contextHolder] = notification.useNotification();
     const succesNotification = () => {
@@ -30,10 +35,21 @@ const AddType = () => {
 
     const {requestJson} = useHttp();
 
+    const [img, setImg] = useState(null);
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    
+
     const formSubmit = async (data) => {
         try{
-            await requestJson(`http://localhost:8080/admin/add-type`,'POST', JSON.stringify(data))
-            succesNotification()
+            if(img){
+                const typeToAdd = {...data, typeImage:'/svg-icons/'+data.typeName+'.svg'}
+                await requestJson(`http://localhost:8080/admin/add-type`,'POST', JSON.stringify(typeToAdd))
+                succesNotification()
+                saveSvgIcon(data.typeName, img)
+            }
+            else{
+                errorNotification()
+            }
         }
         catch{
             errorNotification()
@@ -48,7 +64,22 @@ const AddType = () => {
         <div className='add-type container pt-100'>
             <div className='form-container horizontal_centered'>
                 <form onSubmit={handleSubmit((data)=>formSubmit(data))} className='add-type__form'>
+
                     <h1 className='add-type__form-title'>Добавление нового типа</h1>
+
+                    <div className='form__general-img'>
+                        <div className='img-label'>Иконка (svg):</div>
+
+                        <ImageUpload 
+                            accept='.svg'
+                            img={img}
+                            isFormSubmitted={isFormSubmitted}
+                            setImg={setImg} 
+                        />
+        
+                        <p className='error-message'>{isFormSubmitted ? (img ? null : 'Загрузите иконку') : null}</p>
+                    </div>
+
                     <AuthInput 
                         labelText='Название типа (например "cpu")' 
                         name='typeName' 
@@ -57,6 +88,7 @@ const AddType = () => {
                         register={register} 
                         errors={errors}
                     />
+
                     <AuthInput 
                         labelText='Альтернативное название типа (например "Процессор")' 
                         name='alternativeName' 
@@ -65,7 +97,9 @@ const AddType = () => {
                         register={register} 
                         errors={errors}
                     />
-                    <input className='add-type__form-submit-btn main-color-submit-btn' type='submit' value='Подтвердить'/>
+
+                    <input onClick={()=>setIsFormSubmitted(true)} className='add-type__form-submit-btn main-color-submit-btn' type='submit' value='Подтвердить'/>
+
                 </form>
             </div>
         </div>

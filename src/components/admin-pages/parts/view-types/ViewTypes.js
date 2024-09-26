@@ -9,9 +9,11 @@ import '../../../modals/pc-spec-modal/PcSpecModal.scss'
 import Link from 'next/link';
 import {ConfigProvider, notification } from 'antd';
 import DeleteModal from '../../../modals/delete-modal/DeleteModal'
+import useManageImg from '@/lib/hooks/manageImg.hook';
 
 const ViewTypes = () => {
 
+    const {deleteSvgIcon} = useManageImg();
     
     const [api, contextHolder] = notification.useNotification();
     const succesDeleteNotification = () => {
@@ -69,6 +71,7 @@ const ViewTypes = () => {
     const deleteType = async (type) => {
         try {
             await requestJson(`http://localhost:8080/admin/delete-type`, 'DELETE', JSON.stringify(type))
+            deleteSvgIcon(type?.typeName)
             succesDeleteNotification()
             fetchTypes()
         } catch (error) {
@@ -87,9 +90,12 @@ const ViewTypes = () => {
                     <table className='view-types__table modal-table'>
                         <thead>
                             <tr className='modal-table__header'>
-                                <th className='modal-table__header-text' colSpan={4}>Типы комплектующих</th>
+                                <th className='modal-table__header-text' colSpan={5}>Типы комплектующих</th>
                             </tr>
                             <tr className='modal-table__row-names'>
+                                <th className='modal-table__row-names-cell'>
+                                    typeImage
+                                </th>
                                 <th className='modal-table__row-names-cell'>
                                     typeName
                                 </th>
@@ -102,6 +108,16 @@ const ViewTypes = () => {
                             {types.map((type) => <>
                                 <tr key={type.typeId} className='modal-table__row'>
 
+                                    <td className='modal-table__row-info'>
+                                        <img
+                                            className='type-svg-icon'
+                                            src={type.typeImage}
+                                            width={30}
+                                            height={30}
+                                            alt=''
+                                            loading='lazy'
+                                        />
+                                    </td>
                                     <td className='modal-table__row-info'>{type.typeName}</td>
                                     <td className='modal-table__row-info'>{type.alternativeName}</td>
 

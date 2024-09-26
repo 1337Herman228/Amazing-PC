@@ -22,4 +22,17 @@
            margin-top: 10px;
         }
     }
+
+    .error-message{
+        padding-block: 5px;
+        font-size: 14px;
+        color: var(--red-error-color);
+        font-weight: 300;
+    }
+
+    .img-label{
+        font-size: 16px;
+        color: var(--text-color-grey);
+        margin-bottom: 5px;
+    }
 }

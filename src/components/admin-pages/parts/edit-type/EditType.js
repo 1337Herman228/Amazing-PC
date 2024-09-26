@@ -9,8 +9,12 @@ import AdminDashboard from '@/components/navbar/admin-dashboard/AdminDashboard';
 import AuthInput from '@/components/input/auth-input/AuthInput';
 import { usePathname } from 'next/navigation';
 import LoadingPage from '@/components/loading/LoadingPage';
+import useManageImg from '@/lib/hooks/manageImg.hook';
+import ImageUpload from '@/components/upload-image/ImageUpload';
 
 const EditType = () => {
+
+    const {saveSvgIcon,deleteSvgIcon} = useManageImg();
 
     const [api, contextHolder] = notification.useNotification();
     const succesEditNotification = () => {
@@ -33,14 +37,23 @@ const EditType = () => {
     const {requestJson} = useHttp();
 
     const [type, setType] = useState(null);
-    const [loading, setLoading] = useState(false);
-
+    const [img, setImg] = useState(null);
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
     const formSubmit = async (data) => {
         data.typeId = type.typeId
         try{
-            await requestJson(`http://localhost:8080/admin/edit-type`,'POST', JSON.stringify(data))
-            succesEditNotification()
+            if(img){
+                await requestJson(`http://localhost:8080/admin/edit-type`,'POST', JSON.stringify(data))
+
+                await deleteSvgIcon(type?.typeName)
+                saveSvgIcon(data?.typeName, img)
+
+                succesEditNotification()
+            }
+            else{
+                errorEditNotification()
+            }
         }
         catch{
             errorEditNotification()
@@ -50,13 +63,11 @@ const EditType = () => {
     const id = usePathname().split('/').pop()
     const fetchEditType = async () => {
         try{
-            setLoading(true)
             const editType = await requestJson(`http://localhost:8080/admin/get-type/${id}`)
-            setLoading(false)
             setType(editType)
         }
         catch{
-            setLoading(false)
+
         }
     }
 
@@ -68,11 +79,31 @@ const EditType = () => {
        <>
         {contextHolder}
         <AdminDashboard type='parts'/>
-        {loading && type ? <LoadingPage /> :
+        {!type ? <LoadingPage /> :
         <div className='add-type container pt-100'>
             <div className='form-container horizontal_centered'>
                 <form onSubmit={handleSubmit((data)=>formSubmit(data))} className='add-type__form'>
                     <h1 className='add-type__form-title'>Редактирование типа комплектующей</h1>
+
+                    <div className='form__general-img'>
+                        <div className='img-label'>Иконка (svg):</div>
+
+                        <ImageUpload 
+                            defaultImg={[{
+                                uid: '1',
+                                name: type?.typeName,
+                                status: 'done',
+                                url: type?.typeImage,
+                            }]}
+                            accept='.svg'
+                            img={img}
+                            isFormSubmitted={isFormSubmitted}
+                            setImg={setImg} 
+                        />
+        
+                        <p className='error-message'>{isFormSubmitted ? (img ? null : 'Загрузите иконку') : null}</p>
+                    </div>
+
                     <AuthInput 
                         defaultValue={type?.typeName}
                         labelText='Название типа (например "cpu")' 
@@ -91,7 +122,7 @@ const EditType = () => {
                         register={register} 
                         errors={errors}
                     />
-                    <input className='add-type__form-submit-btn main-color-submit-btn' type='submit' value='Подтвердить'/>
+                    <input onClick={()=>setIsFormSubmitted(true)} className='add-type__form-submit-btn main-color-submit-btn' type='submit' value='Подтвердить'/>
                 </form>
             </div>
         </div>

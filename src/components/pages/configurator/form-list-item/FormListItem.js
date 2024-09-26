@@ -6,24 +6,24 @@ import configuratorHook from '../../../../lib/hooks/configuratorHook'
 
 const FormListItem = (
      {
-     name, 
+     // name, 
      type,
      partition, 
      category,
      items, 
-     multiselect, 
+     multiselect = null, 
      default_checked = true, 
-     max_quantity,
+     max_quantity = 0,
      addItemToProduct
      }) => {
 
      const [displayAppearance, setDisplayAppearance] = useState('list')
      const [filteredItems, setFilteredItems] = useState(items)
      const [selectedItem, setSelectedItem] = useState(multiselect ? (default_checked ? [items[0]]:[]) : default_checked ? items[0] : null)
-          // console.log('selectedItem',selectedItem)
+          console.log('selectedItem',selectedItem)
           // console.log('name',name)
 
-     const {selectIcon} = configuratorHook()
+     // const {selectIcon} = configuratorHook()
 
      const alignGridItemWidth =()=>{
           const items = document.querySelectorAll('.grid-display')
@@ -49,13 +49,13 @@ const FormListItem = (
 
      useEffect(() => {
           addDefaultFields()
-          addItemToProduct(type, selectedItem)
+          addItemToProduct(type.typeName, selectedItem)
      }, [selectedItem])
 
      const addDefaultFields = () => {
           if(selectedItem != null){
                selectedItem.category = category // Устанавливаем категорию
-               selectedItem.title = name // Устанавливаем title
+               selectedItem.title = type.alternativeName // Устанавливаем title
           }
      }
 
@@ -63,7 +63,7 @@ const FormListItem = (
           const btn = e.target
           const part_name = btn.id
 
-          part_name === 'all' ? setFilteredItems(items) : setFilteredItems(items.filter(item => item.partition===part_name))
+          part_name === 'all' ? setFilteredItems(items) : setFilteredItems(items.filter(item => item.partitions.partitionName===part_name))
 
           const allBtns = btn.parentElement.querySelectorAll('.item-body__dashboard-filter-button')
           allBtns.forEach(btn => btn.classList.remove('active'))
@@ -89,18 +89,18 @@ const FormListItem = (
 
      return(
           <>
-          <li id={name} className='managed-component-item'>
+          <li id={type.alternativeName} className='managed-component-item'>
                <div className='managed-component-item__header'>
                     <div className='managed-component-item__header-left'>
                          <img
                               className='managed-component-item__header-left-icon'
-                              src={selectIcon(name)}
+                              src={type.typeImage}
                               width={40}
                               height={40}
                               alt=''
                               loading='lazy'
                          />
-                         <span className='managed-component-item__header-left-title'>{name}</span>
+                         <span className='managed-component-item__header-left-title'>{type.alternativeName}</span>
                     </div>
                     {/* <button className='managed-component-item__header-right'>
                          Какой графический процессор вам подойдёт?
@@ -160,7 +160,7 @@ const FormListItem = (
                          <div className='image-container'>
                               <img
                                    className='image-container__img'
-                                   src={multiselect ? (selectedItem[selectedItem.length-1]?.img || '/components/nothing-selected.jpg') : selectedItem?.img || '/components/nothing-selected.jpg'}
+                                   src={multiselect ? (selectedItem[selectedItem.length-1]?.image || '/components/nothing-selected.jpg') : selectedItem?.image || '/components/nothing-selected.jpg'}
                                    width={314}
                                    height={176}
                                    alt=''
@@ -174,16 +174,16 @@ const FormListItem = (
                                              <input
                                                   className='list-display__form-item-input'
                                                   type={multiselect ? 'checkbox' : 'radio'}
-                                                  name={name}
-                                                  id={name + "-" + item.id}
+                                                  name={type.alternativeName}
+                                                  id={type.alternativeName + "-" + item.partId}
                                                   onChange={multiselect ? () =>onCheckboxClick(item) : () => setSelectedItem(item)}
                                                   checked={multiselect ? 
                                                        selectedItem.includes(item)
-                                                       : selectedItem?.id === item.id}
+                                                       : selectedItem?.partId === item.partId}
                                              />
                                              <label
                                                   className='list-display__form-item-label'
-                                                  htmlFor={name + "-" + item.id}
+                                                  htmlFor={type.alternativeName + "-" + item.partId}
                                              >
                                                   {multiselect && max_quantity ? 
                                                   <>
@@ -218,7 +218,7 @@ const FormListItem = (
                                                        loading='lazy'
                                                   />
                                              </button>
-                                             { (!default_checked && !multiselect && selectedItem?.id === item.id) ? 
+                                             { (!default_checked && !multiselect && selectedItem?.partId === item.partId) ? 
                                                   <button 
                                                        onClick={() => setSelectedItem(null)}
                                                        className='list-display__form-item-x-btn'
@@ -227,7 +227,7 @@ const FormListItem = (
                                                   </button> 
                                                   :null}
                                         </div>
-                                        <div className={`list-display__form-item-price ${multiselect ? (selectedItem.includes(item) ? 'hidden' : '') : (selectedItem?.id === item.id ? 'hidden' : '') }`}>
+                                        <div className={`list-display__form-item-price ${multiselect ? (selectedItem.includes(item) ? 'hidden' : '') : (selectedItem?.partId === item.partId ? 'hidden' : '') }`}>
                                              {multiselect ? ('+' + item.price) : (selectedItem?.price ? (item.price - selectedItem?.price < 0 ? item.price - selectedItem?.price : `+${item.price - selectedItem?.price}`) : ('+' + item.price) )} BYN
                                         </div>
                                    </li>
@@ -239,7 +239,7 @@ const FormListItem = (
                               <li key={index} className='grid-display__form-item'>
                                    <img
                                         className='grid-display__form-item-img'
-                                        src={item.img}
+                                        src={item.image}
                                         width={314}
                                         height={176}
                                         alt=''
@@ -250,16 +250,16 @@ const FormListItem = (
                                         <input
                                              className='list-display__form-item-input'
                                              type={multiselect ? 'checkbox' : 'radio'}
-                                             name={name +'-grid'}
-                                             id={name + "-" + item.id}
+                                             name={type.alternativeName +'-grid'}
+                                             id={type.alternativeName + "-" + item.partId}
                                              onChange={multiselect ? () =>onCheckboxClick(item) : () => setSelectedItem(item)}
                                              checked={multiselect ? 
                                                   selectedItem.includes(item)
-                                                  : selectedItem?.id === item.id}
+                                                  : selectedItem?.partId === item.partId}
                                         />
                                         <label
                                              className='list-display__form-item-label'
-                                             htmlFor={name + "-" + item.id}
+                                             htmlFor={type.alternativeName + "-" + item.partId}
                                         >
                                              {multiselect && max_quantity ? 
                                                   <>
@@ -276,9 +276,8 @@ const FormListItem = (
                                         </label>
                                    </div>
                                    <div 
-                                   // style={{width:gridLabelWidth}} 
                                    className='grid-display__form-item-footer'>
-                                        <div className={`list-display__form-item-price ${multiselect ? (selectedItem.includes(item) ? 'hidden' : '') : (selectedItem?.id === item.id ? 'hidden' : '') }`}>
+                                        <div className={`list-display__form-item-price ${multiselect ? (selectedItem.includes(item) ? 'hidden' : '') : (selectedItem?.partId === item.partId ? 'hidden' : '') }`}>
                                              {multiselect ? ('+' + item.price) : (selectedItem?.price ? (item.price - selectedItem?.price < 0 ? item.price - selectedItem?.price : `+${item.price - selectedItem?.price}`) : ('+' + item.price)) } BYN
                                         </div>
                                         <div className='grid-display__form-item-footer-btns'>
@@ -302,7 +301,7 @@ const FormListItem = (
                                                        loading='lazy'
                                                   />
                                              </button>
-                                             { (!default_checked && !multiselect && selectedItem?.id === item.id) ? 
+                                             { (!default_checked && !multiselect && selectedItem?.partId === item.partId) ? 
                                                   <button 
                                                        onClick={() => setSelectedItem(null)}
                                                        className='list-display__form-item-x-btn'

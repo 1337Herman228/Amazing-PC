@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useCallback, useMemo} from 'react';
+import {useState, useCallback} from 'react';
 import useCookie from '../hooks/cookie.hook';
 
 const useHttp = () =>{

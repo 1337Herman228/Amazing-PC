@@ -25,6 +25,8 @@ const configuratorHook = () => {
                     return '/configurator-svg/monitor.svg'
                case 'Мышь':
                     return '/configurator-svg/mouse.svg'
+               case "Наушники":
+                    return '/configurator-svg/mouse.svg'
                default:
                     return null
           }

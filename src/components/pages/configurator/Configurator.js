@@ -5,6 +5,8 @@ import './Configurator.scss'
 import FormListItem from './form-list-item/FormListItem'
 import Summation from './summation/Summation'
 import NavTree from './nav-tree/NavTree'
+import useHttp from '@/lib/hooks/http.hook';
+import LoadingPage from '@/components/loading/LoadingPage'
 
      // default_checked - checked по умолчанию (по дефолту стоит в true, даже если поля в объекте нет)
      // когда это значение стоит в false и элемент радиокнопка, то при выборе появляется красный крестик, нажатие на который уюирает выбор кнопки
@@ -17,7 +19,7 @@ import NavTree from './nav-tree/NavTree'
 
 const components_list = [
      {
-          id: 1,
+          // id: 1,
           name: 'Видеокарта',
           type: 'gpu',
 
@@ -1116,67 +1118,143 @@ const components_list = [
                },
           ]
      },
-
-
 ]
 
 const Configurator = () => {
 
+     const {requestJson} = useHttp();
+
+     const [componentsList, setComponentsList] = useState(null);
      const [product, setProduct] = useState({});
-     console.log('product', product)
+     const [loading, setLoading] = useState(true);
+
+     // console.log('product', product)
+     console.log('componentsList', componentsList)
 
      const addItemToProduct = (name, item) => {
           product[`${name}`] = item
           setProduct({...product})
      }
 
+     useEffect(() => {
+          fetchConfiguratorParts()
+     }, []);
+
+     const fetchConfiguratorParts = async () => {
+          try {
+              setLoading(true);
+              const data = await requestJson(`http://localhost:8080/user/configurator-parts`)
+              setComponentsList(data)
+              setLoading(false);
+          } catch (error) {
+              console.error(error)
+              setLoading(false);
+          }
+      }
+
+     // const makeNavTreeInfoArray = () => {
+     //      const categories = []
+     //      let uniqueCategories;
+
+     //      components_list.forEach( el =>{
+     //           categories.push(el.category)
+     //      })
+     //      uniqueCategories = categories.filter((item, index) => categories.indexOf(item) === index);
+          
+     //      let allItems = []
+     //      components_list.forEach( el =>{
+     //           allItems.push({category: el.category, name: el.name})
+     //      })
+          
+     //      return {uniqueCategories, allItems}
+     // }
      const makeNavTreeInfoArray = () => {
           const categories = []
-          let uniqueCategories;
-
-          components_list.forEach( el =>{
-               categories.push(el.category)
-          })
-          uniqueCategories = categories.filter((item, index) => categories.indexOf(item) === index);
-          
+          let uniqueCategories = [];
           let allItems = []
-          components_list.forEach( el =>{
-               allItems.push({category: el.category, name: el.name})
-          })
-          
-          return {uniqueCategories, allItems}
-     }
 
+          if(componentsList){
+
+               componentsList.components.forEach( el =>{
+                    categories.push(el.category.categoryName)
+               })
+               uniqueCategories = categories.filter((item, index) => categories.indexOf(item) === index); // удаляем дубликаты
+               
+               componentsList.components.forEach( el =>{
+                    allItems.push(
+                         {
+                              category: el.category.categoryName, 
+                              name: el.type.alternativeName,
+                              icon: el.type.typeImage
+                         })
+               })
+          }
+          return {uniqueCategories, allItems}
+       
+     }
      const {uniqueCategories, allItems} = makeNavTreeInfoArray()
+     // console.log('uniqueCategories', uniqueCategories)
+     // console.log('allItems', allItems)
 
      return(
           <>
+          {loading ? <LoadingPage /> : 
+           
                <section className='configurator container section-decreased'>
                     <aside className='aside-components-tree hidden-tablet sticky-block'>
                          <NavTree uniqueCategories={uniqueCategories} allItems={allItems}/>
                     </aside>
 
                     <ul className='components-list'>
-                         {components_list.map((item) => 
+                         {/* {components_list.map((item,i) => 
                               <FormListItem 
                                    addItemToProduct={addItemToProduct}
                                    max_quantity={item?.max_quantity}
                                    default_checked={item?.default_checked}
                                    multiselect={item?.multiselect} 
-                                   key={item.id} 
+                                   key={i} 
                                    name={item.name} 
                                    type={item.type}
                                    category = {item.category}
                                    partition={item.partition} 
                                    items={item.items}
-                              />) 
-                         }
+                              />
+                         )} */}
+                         {/* {componentsList.components.map((item,i) => 
+                              <FormListItem 
+                                   addItemToProduct={addItemToProduct}
+                                   max_quantity={item?.max_quantity}
+                                   default_checked={item?.default_checked}
+                                   multiselect={item?.multiselect} 
+                                   key={i} 
+                                   name={item.type.alternativeName} 
+                                   type={item.type.typeName}
+                                   category = {item.category.categoryName}
+                                   partition={item.partition} 
+                                   items={item.items}
+                              />
+                         )} */}
+                         {componentsList.components.map((item,i) => 
+                              <FormListItem 
+                                   addItemToProduct={addItemToProduct}
+                                   max_quantity={item?.max_quantity}
+                                   default_checked={item?.default_checked}
+                                   multiselect={item?.multiselect} 
+                                   key={i} 
+                                   // name={item.type.alternativeName} 
+                                   type={item.type}
+                                   category = {item.category}
+                                   partition={item.partition} 
+                                   items={item.items}
+                              />
+                         )}
                     </ul>
 
                     <aside className='summation sticky-block'>
                          <Summation product={product} />
                     </aside>
                </section>
+          }
           </>
      )
 } 

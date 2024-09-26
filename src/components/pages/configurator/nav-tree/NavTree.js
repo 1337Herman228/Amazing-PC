@@ -68,7 +68,7 @@ const NavTree = ({uniqueCategories, allItems}) => {
                               <Link key={index} href={`#${item.name}`} className='tree-list__nav-list-item'>
                                    <img
                                         className='tree-list__nav-list-item-icon'
-                                        src={selectIcon(item.name)}
+                                        src={item.icon}
                                         width={20}
                                         height={20}
                                         alt=''
